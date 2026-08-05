@@ -3,10 +3,13 @@ import Layout from '@/layouts/Layout.astro';
 import { site } from '@/config/site';
 ---
 <Layout title="Page not found" description="The page you were looking for could not be found.">
-  <section class="section">
+  <section class="section relative overflow-hidden">
     <div class="container-prose text-center reveal">
-      <svg aria-hidden="true" class="mx-auto h-20 w-20 text-plum-400 animate-wing-flutter mb-4" viewBox="0 0 64 64" fill="currentColor">
+      <svg aria-hidden="true" class="mx-auto h-20 w-20 text-plum-400 animate-wing-fly mb-4" viewBox="0 0 64 64" fill="currentColor">
         <path d="M32 6c-10 10-26 10-30 7 3 13 16 23 30 23s27-10 30-23c-4 3-20 3-30-7z" opacity=".8"/>
+      </svg>
+      <svg aria-hidden="true" class="absolute top-8 right-8 h-12 w-12 text-gold-400/30 animate-wing-fly hidden md:block" viewBox="0 0 64 64" fill="currentColor" style="animation-direction: reverse; animation-duration: 7s">
+        <path d="M32 8c-8 8-20 8-24 6 2 10 12 18 24 18s22-8 24-18c-4 2-16 2-24-6z" opacity=".5"/>
       </svg>
       <p class="eyebrow">404</p>
       <h1 class="font-display text-4xl text-plum-900 mt-3">That page took a different path.</h1>

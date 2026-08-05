@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import Stats from '@/components/Stats.astro';
+import WingDivider from '@/components/WingDivider.astro';
 import { site } from '@/config/site';
 
 const aboutImg = '/brand/group-meeting.jpg';
@@ -12,7 +13,7 @@ const affiliatesImg = 'https://images.unsplash.com/photo-1559027615-cd4628902d4a
 ---
 <Layout title="About Us" description="Renewing Hope Strategies is a 501(c)(3) nonprofit providing judgement-free mental-health and wellness counseling on a sliding scale across the Inland Empire.">
   <section class="relative overflow-hidden bg-plum-900 text-mist-50">
-    <img src={aboutImg} alt="" aria-hidden="true" loading="eager" class="absolute inset-0 h-full w-full object-cover opacity-25" />
+    <img src={aboutImg} alt="" aria-hidden="true" loading="eager" class="absolute inset-0 h-full w-full object-cover opacity-25 animate-fade-in" />
     <div class="absolute inset-0 bg-gradient-to-br from-plum-950/80 to-plum-800/40"></div>
     <div class="container-wide relative py-14 md:py-20 grid md:grid-cols-2 gap-10 items-center">
       <div class="reveal">
@@ -29,12 +30,14 @@ const affiliatesImg = 'https://images.unsplash.com/photo-1559027615-cd4628902d4a
     </div>
   </section>
 
+  <WingDivider variant="sage" />
+
   <section class="section">
     <div class="container-wide">
       <SectionHeading eyebrow="By the numbers" title="What access looks like in practice." />
       <Stats />
       <div class="mt-10 grid md:grid-cols-3 gap-6 reveal-stagger">
-        <div class="card overflow-hidden !p-0 reveal">
+        <div class="card card-tilt overflow-hidden !p-0 reveal">
           <img src={scaleImg} alt="" aria-hidden="true" class="h-32 w-full object-cover" loading="lazy" />
           <div class="p-5">
             <h3 class="font-display text-lg text-plum-900">Sliding scale</h3>
@@ -42,7 +45,7 @@ const affiliatesImg = 'https://images.unsplash.com/photo-1559027615-cd4628902d4a
             <a href="/sliding-scale" class="mt-3 inline-block text-sm font-semibold text-plum-600">See how it works →</a>
           </div>
         </div>
-        <div class="card overflow-hidden !p-0 reveal" style="transition-delay:80ms">
+        <div class="card card-tilt overflow-hidden !p-0 reveal" style="transition-delay:80ms">
           <img src={mobileUnitImg} alt="" aria-hidden="true" class="h-32 w-full object-cover" loading="lazy" />
           <div class="p-5">
             <h3 class="font-display text-lg text-plum-900">Mobile unit</h3>
@@ -50,7 +53,7 @@ const affiliatesImg = 'https://images.unsplash.com/photo-1559027615-cd4628902d4a
             <a href="/events" class="mt-3 inline-block text-sm font-semibold text-plum-600">Find a stop →</a>
           </div>
         </div>
-        <div class="card overflow-hidden !p-0 reveal" style="transition-delay:160ms">
+        <div class="card card-tilt overflow-hidden !p-0 reveal" style="transition-delay:160ms">
           <img src={teamImg} alt="" aria-hidden="true" class="h-32 w-full object-cover" loading="lazy" />
           <div class="p-5">
             <h3 class="font-display text-lg text-plum-900">Our team</h3>
@@ -67,11 +70,11 @@ const affiliatesImg = 'https://images.unsplash.com/photo-1559027615-cd4628902d4a
       <div class="reveal">
         <SectionHeading eyebrow="Affiliates" title="Part of a larger network of hope." subtitle="We work alongside closely aligned organizations that share our mission." />
         <div class="mt-6 grid gap-4 reveal-stagger">
-          <a href={site.affiliates.rhfcc} class="card hover:shadow-lift transition reveal">
+          <a href={site.affiliates.rhfcc} class="card card-tilt hover:shadow-lift transition reveal">
             <h3 class="font-display text-lg text-plum-900">RHFCC Inc.</h3>
             <p class="mt-2 text-sm text-plum-700/90">Renewing Hope Family Counseling Center, Inc. — our founding corporate entity.</p>
           </a>
-          <a href={site.affiliates.moveWithHope} class="card hover:shadow-lift transition reveal" style="transition-delay:80ms">
+          <a href={site.affiliates.moveWithHope} class="card card-tilt hover:shadow-lift transition reveal" style="transition-delay:80ms">
             <h3 class="font-display text-lg text-plum-900">Move With Hope</h3>
             <p class="mt-2 text-sm text-plum-700/90">A movement-based wellness companion organization pairing physical activity with mental health.</p>
           </a>

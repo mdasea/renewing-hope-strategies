@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
+import WingDivider from '@/components/WingDivider.astro';
 import { areas } from '@/config/site';
 
 const heroImg = 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80';
@@ -12,7 +13,7 @@ const cityImages: Record<string, string> = {
 ---
 <Layout title="Locations" description="Renewing Hope Strategies serves Hemet, Murrieta, and Riverside, CA with office-based care, telehealth, and a mobile counseling unit.">
   <section class="relative overflow-hidden bg-plum-900 text-mist-50">
-    <img src={heroImg} alt="" aria-hidden="true" loading="eager" class="absolute inset-0 h-full w-full object-cover opacity-25" />
+    <img src={heroImg} alt="" aria-hidden="true" loading="eager" class="absolute inset-0 h-full w-full object-cover opacity-25 animate-fade-in" />
     <div class="absolute inset-0 bg-gradient-to-br from-plum-950/80 to-plum-800/40"></div>
     <div class="container-wide relative py-14 md:py-18">
       <SectionHeading
@@ -24,10 +25,12 @@ const cityImages: Record<string, string> = {
     </div>
   </section>
 
+  <WingDivider variant="sage" />
+
   <section class="section">
     <div class="container-wide grid md:grid-cols-3 gap-6 reveal-stagger">
       {Object.values(areas).map((a, i) => (
-        <a href={`/locations/${a.slug}`} class="card overflow-hidden !p-0 hover:shadow-lift transition reveal" style={`transition-delay:${i*80}ms`}>
+        <a href={`/locations/${a.slug}`} class="card card-tilt overflow-hidden !p-0 hover:shadow-lift transition reveal" style={`transition-delay:${i*80}ms`}>
           <img src={cityImages[a.slug] || cityImages.hemet} alt="" aria-hidden="true" class="h-36 w-full object-cover" loading="lazy" />
           <div class="p-5">
             <h3 class="font-display text-2xl text-plum-900">{a.name.split(',')[0]}</h3>

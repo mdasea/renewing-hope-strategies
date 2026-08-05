@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import GivebutterWidget from '@/components/GivebutterWidget.astro';
 import Stats from '@/components/Stats.astro';
+import WingDivider from '@/components/WingDivider.astro';
 import { site } from '@/config/site';
 
 const heroImg = 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=80';
@@ -25,30 +26,35 @@ const otherWaysImg = 'https://images.unsplash.com/photo-1579621970795-87facc2f97
     </div>
   </section>
 
+  <WingDivider variant="sage" />
+
   <section class="section">
     <div class="container-wide">
       <SectionHeading align="center" eyebrow="Your impact" title="Where your money goes." />
       <Stats />
       <div class="mt-12 grid md:grid-cols-3 gap-6 reveal-stagger">
-        <div class="card overflow-hidden !p-0 reveal">
+        <div class="card card-tilt overflow-hidden !p-0 reveal">
           <img src={impactImg} alt="" aria-hidden="true" class="h-32 w-full object-cover" loading="lazy" />
-          <div class="p-5">
-            <p class="font-display text-3xl text-plum-600">$25</p>
-            <p class="mt-1 text-sm text-plum-700/90">Funds one sliding-scale counseling session for someone who couldn't otherwise afford care.</p>
+          <div class="p-5 relative">
+            <p class="font-display text-3xl text-plum-600" data-countup="25" data-countup-display="${25}">$0</p>
+            <div class="impact-bar absolute bottom-0 left-5 right-5 h-[3px] bg-sage-400/60 rounded-full" aria-hidden="true"></div>
+            <p class="mt-3 text-sm text-plum-700/90">Funds one sliding-scale counseling session for someone who couldn't otherwise afford care.</p>
           </div>
         </div>
-        <div class="card overflow-hidden !p-0 reveal" style="transition-delay:80ms">
+        <div class="card card-tilt overflow-hidden !p-0 reveal" style="transition-delay:80ms">
           <img src="/brand/board-banner.jpg" alt="" aria-hidden="true" class="h-32 w-full object-cover" loading="lazy" />
-          <div class="p-5">
-            <p class="font-display text-3xl text-plum-600">$100</p>
-            <p class="mt-1 text-sm text-plum-700/90">Pays for a mobile-unit stop in a community without easy access to mental-health care.</p>
+          <div class="p-5 relative">
+            <p class="font-display text-3xl text-plum-600" data-countup="100" data-countup-display="${100}">$0</p>
+            <div class="impact-bar absolute bottom-0 left-5 right-5 h-[3px] bg-sage-400/60 rounded-full" aria-hidden="true"></div>
+            <p class="mt-3 text-sm text-plum-700/90">Pays for a mobile-unit stop in a community without easy access to mental-health care.</p>
           </div>
         </div>
-        <div class="card overflow-hidden !p-0 reveal" style="transition-delay:160ms">
+        <div class="card card-tilt overflow-hidden !p-0 reveal" style="transition-delay:160ms">
           <img src="/brand/hero-group.jpg" alt="" aria-hidden="true" class="h-32 w-full object-cover" loading="lazy" />
-          <div class="p-5">
-            <p class="font-display text-3xl text-plum-600">$500</p>
-            <p class="mt-1 text-sm text-plum-700/90">Covers a full course of crisis materials, safety plans, and intake kits for an event.</p>
+          <div class="p-5 relative">
+            <p class="font-display text-3xl text-plum-600" data-countup="500" data-countup-display="${500}">$0</p>
+            <div class="impact-bar absolute bottom-0 left-5 right-5 h-[3px] bg-sage-400/60 rounded-full" aria-hidden="true"></div>
+            <p class="mt-3 text-sm text-plum-700/90">Covers a full course of crisis materials, safety plans, and intake kits for an event.</p>
           </div>
         </div>
       </div>

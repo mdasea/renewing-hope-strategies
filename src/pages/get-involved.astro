@@ -11,7 +11,7 @@ const cliniciansImg = 'https://images.unsplash.com/photo-1576091160550-2173dba99
 ---
 <Layout title="Get Involved" description="Volunteer, donate, partner, or join the board of Renewing Hope Strategies. Help bring accessible mental-health care to the Inland Empire.">
   <section class="relative overflow-hidden bg-plum-900 text-mist-50">
-    <img src={heroImg} alt="" aria-hidden="true" loading="eager" class="absolute inset-0 h-full w-full object-cover opacity-25" />
+    <img src={heroImg} alt="" aria-hidden="true" loading="eager" class="absolute inset-0 h-full w-full object-cover opacity-25 animate-fade-in" />
     <div class="absolute inset-0 bg-gradient-to-br from-plum-950/80 to-plum-800/40"></div>
     <div class="container-wide relative py-14 md:py-18">
       <SectionHeading dark eyebrow="Get involved" title="Be part of the hope." subtitle="Whether you give an hour, a dollar, or a career — there is a place for you in this work." />
@@ -20,21 +20,21 @@ const cliniciansImg = 'https://images.unsplash.com/photo-1576091160550-2173dba99
 
   <section class="section" id="volunteer">
     <div class="container-wide grid md:grid-cols-3 gap-6 reveal-stagger">
-      <a href="/donate" class="card overflow-hidden !p-0 hover:shadow-lift transition reveal">
+      <a href="/donate" class="card card-tilt overflow-hidden !p-0 hover:shadow-lift transition reveal">
         <img src={donateImg} alt="" aria-hidden="true" class="h-36 w-full object-cover" loading="lazy" />
         <div class="p-5">
           <h3 class="font-display text-xl text-plum-900">Donate</h3>
           <p class="mt-2 text-sm text-plum-700/90">One-time or monthly. Tax-deductible. Funds sliding-scale sessions and the mobile unit.</p>
         </div>
       </a>
-      <a href={`mailto:${site.email}?subject=Volunteer%20with%20Renewing%20Hope`} class="card overflow-hidden !p-0 hover:shadow-lift transition reveal" style="transition-delay:80ms">
+      <a href={`mailto:${site.email}?subject=Volunteer%20with%20Renewing%20Hope`} class="card card-tilt overflow-hidden !p-0 hover:shadow-lift transition reveal" style="transition-delay:80ms">
         <img src={volunteerImg} alt="" aria-hidden="true" class="h-36 w-full object-cover" loading="lazy" />
         <div class="p-5">
           <h3 class="font-display text-xl text-plum-900">Volunteer</h3>
           <p class="mt-2 text-sm text-plum-700/90">Licensed clinicians, graduate interns, event helpers, and bilingual translators welcome.</p>
         </div>
       </a>
-      <a href="/events" class="card overflow-hidden !p-0 hover:shadow-lift transition reveal" style="transition-delay:160ms">
+      <a href="/events" class="card card-tilt overflow-hidden !p-0 hover:shadow-lift transition reveal" style="transition-delay:160ms">
         <img src={hostImg} alt="" aria-hidden="true" class="h-36 w-full object-cover" loading="lazy" />
         <div class="p-5">
           <h3 class="font-display text-xl text-plum-900">Host a mobile-unit stop</h3>

@@ -31,13 +31,13 @@ const bodyImg = cityBodyImg[area.slug] || cityBodyImg.hemet;
   description={`Mental-health counseling in ${cityName}, CA. Anxiety, depression, relationship, anger management, eating disorders. Sliding scale. Nonprofit. Mobile unit.`}
 >
   <section class="relative overflow-hidden bg-plum-900 text-mist-50">
-    <img src={img} alt="" aria-hidden="true" loading="eager" class="absolute inset-0 h-full w-full object-cover opacity-30" />
+    <img src={img} alt="" aria-hidden="true" loading="eager" class="absolute inset-0 h-full w-full object-cover opacity-30 animate-fade-in" />
     <div class="absolute inset-0 bg-gradient-to-br from-plum-950/80 to-plum-800/40"></div>
     <div class="container-wide relative py-14 md:py-20">
-      <p class="eyebrow !text-sage-300 mb-3">Where we serve</p>
-      <h1 class="font-display text-4xl md:text-5xl text-white">{area.name}</h1>
-      <p class="mt-4 text-lg text-mist-100/90 max-w-prose">{area.blurb}</p>
-      <div class="mt-6">
+      <p class="eyebrow !text-sage-300 mb-3 reveal">Where we serve</p>
+      <h1 class="font-display text-4xl md:text-5xl text-white reveal" style="transition-delay:80ms">{area.name}</h1>
+      <p class="mt-4 text-lg text-mist-100/90 max-w-prose reveal" style="transition-delay:140ms">{area.blurb}</p>
+      <div class="mt-6 reveal" style="transition-delay:200ms">
         <a href="/contact" class="btn-gold">Request an appointment</a>
       </div>
     </div>
@@ -48,7 +48,7 @@ const bodyImg = cityBodyImg[area.slug] || cityBodyImg.hemet;
       <SectionHeading eyebrow="Specialties in town" title={`${cityName} counseling services`} />
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mt-8 reveal-stagger">
         {services.map((s, i) => (
-          <a href={`/services/${s.slug}/${area.slug}`} class="card hover:shadow-lift transition reveal" style={`transition-delay:${i*70}ms`}>
+          <a href={`/services/${s.slug}/${area.slug}`} class="card card-tilt hover:shadow-lift transition reveal" style={`transition-delay:${i*70}ms`}>
             <h3 class="font-display text-lg text-plum-900">{s.name} in {cityName}</h3>
             <p class="mt-2 text-sm text-plum-700/90">{s.tagline}</p>
           </a>

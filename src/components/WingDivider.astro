@@ -1,0 +1,24 @@
+---
+export interface Props {
+  flip?: boolean;
+  variant?: 'sage' | 'plum' | 'gold';
+}
+
+const { flip = false, variant = 'sage' } = Astro.props;
+
+const colorMap: Record<string, string> = {
+  sage: 'text-sage-400/25',
+  plum: 'text-plum-600/20',
+  gold: 'text-gold-400/25'
+};
+---
+<div class="wing-divider" aria-hidden="true">
+  <svg
+    class:list={['h-20 w-40 animate-wing-flutter', colorMap[variant], flip ? '-scale-x-100' : '']}
+    style={flip ? 'top:-2.5rem' : 'top:-2.5rem'}
+    viewBox="0 0 64 64"
+    fill="currentColor"
+  >
+    <path d="M32 6c-10 10-26 10-30 7 3 13 16 23 30 23s27-10 30-23c-4 3-20 3-30-7z" opacity=".7"/>
+  </svg>
+</div>

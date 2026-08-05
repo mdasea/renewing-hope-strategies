@@ -9,56 +9,54 @@ import ServicesGrid from '@/components/ServicesGrid.astro';
 import Stats from '@/components/Stats.astro';
 import ContactForm from '@/components/ContactForm.astro';
 import NewsletterForm from '@/components/NewsletterForm.astro';
+import WingDivider from '@/components/WingDivider.astro';
 
 const upcoming = [...events].sort((a,b) => a.date.localeCompare(b.date)).slice(0,3);
 
-// Unsplash mental-health / wellness imagery — free, licensed, theme-appropriate.
 const heroImg = '/brand/hero-group.jpg';
 const missionImg = '/brand/park-people.jpg';
 const mobileUnitImg = '/brand/board-banner.jpg';
 ---
 <Layout>
-  <!-- HERO -->
   <section class="relative overflow-hidden bg-plum-950">
     <video
       autoplay muted loop playsinline
       poster={heroImg}
-      class="absolute inset-0 h-full w-full object-cover"
+      class="absolute inset-0 h-full w-full object-cover animate-fade-in"
       aria-hidden="true"
     >
       <source src="/brand/hero-video.mp4" type="video/mp4" />
     </video>
-    <div class="absolute inset-0 bg-gradient-to-r from-plum-950/85 via-plum-950/50 to-transparent" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-plum-950/85 via-plum-950/50 to-transparent animate-fade-in" aria-hidden="true"></div>
     <div class="container-wide relative py-20 md:py-28">
-      <div class="reveal max-w-xl">
-        <p class="eyebrow !text-sage-300 mb-4">A 501(c)(3) Nonprofit · Hemet · Murrieta · Riverside, CA</p>
-        <h1 class="font-display text-4xl md:text-6xl leading-[1.05] text-white">
+      <div class="max-w-xl">
+        <p class="eyebrow !text-sage-300 mb-4 reveal">A 501(c)(3) Nonprofit · Hemet · Murrieta · Riverside, CA</p>
+        <h1 class="font-display text-4xl md:text-6xl leading-[1.05] text-white reveal" style="transition-delay:100ms">
           Recovery is possible.<br/>
           <span class="text-sage-300">We can help you get there.</span>
         </h1>
-        <p class="mt-6 text-lg text-mist-100/90 max-w-prose">
+        <p class="mt-6 text-lg text-mist-100/90 max-w-prose reveal" style="transition-delay:180ms">
           Judgement-free mental-health and wellness counseling for individuals and families —
           on a sliding scale, in person or through our mobile unit. No one is turned away for inability to pay.
         </p>
-        <div class="mt-8 flex flex-wrap gap-3">
+        <div class="mt-8 flex flex-wrap gap-3 reveal" style="transition-delay:240ms">
           <a href="/services" class="btn-primary">Get help →</a>
           <a href="/donate" class="btn-gold">Donate</a>
           <a href={`tel:${site.phoneHref}`} class="btn-secondary !bg-white/10 !text-white !border-white/30 hover:!bg-white/20">Call {site.phoneDisplay}</a>
         </div>
-        <p class="mt-6 text-sm text-mist-200/80">
+        <p class="mt-6 text-sm text-mist-200/80 reveal" style="transition-delay:300ms">
           In crisis right now? <a href="tel:988" class="font-semibold underline text-sage-300">Call or text 988</a> — free &amp; confidential, 24/7.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- MISSION / VISION -->
   <section class="section">
     <div class="container-wide">
       <img src={missionImg} alt="Renewing Hope community members gathering outdoors" class="rounded-2xl shadow-lift w-full h-48 md:h-72 object-cover mb-10 reveal" loading="lazy" />
     </div>
     <div class="container-wide grid md:grid-cols-2 gap-8">
-      <div class="card reveal">
+      <div class="card card-parallax reveal">
         <p class="eyebrow">Mission</p>
         <h2 class="font-display text-2xl mt-2 text-plum-900">Recovery within reach, for everyone.</h2>
         <p class="mt-4 text-plum-700/90">
@@ -66,7 +64,7 @@ const mobileUnitImg = '/brand/board-banner.jpg';
           empowering individuals to achieve recovery regardless of their socio-economic status.
         </p>
       </div>
-      <div class="card bg-plum-900 text-mist-100 border-plum-700 reveal" style="transition-delay:80ms">
+      <div class="card card-parallax bg-plum-900 text-mist-100 border-plum-700 reveal" style="transition-delay:80ms">
         <p class="eyebrow !text-gold-400">Vision</p>
         <h2 class="font-display text-2xl mt-2 text-white">Stigma gives way to awareness.</h2>
         <p class="mt-4 text-mist-200">
@@ -79,7 +77,6 @@ const mobileUnitImg = '/brand/board-banner.jpg';
     </div>
   </section>
 
-  <!-- VIDEO -->
   <section class="section bg-mist-100">
     <div class="container-wide">
       <SectionHeading align="center" eyebrow="See the hope" title="Watch us in action." subtitle="A glimpse into the heart of Renewing Hope Strategies and the communities we serve." />
@@ -100,13 +97,14 @@ const mobileUnitImg = '/brand/board-banner.jpg';
 
   <ServicesGrid />
 
-  <!-- LOCATIONS -->
+  <WingDivider variant="sage" />
+
   <section class="section bg-mist-100">
     <div class="container-wide">
       <SectionHeading eyebrow="Where we serve" title="Three communities. One mission." subtitle="Our team serves the Inland Empire with office-based care, telehealth, and a traveling mobile unit." />
       <div class="grid gap-5 md:grid-cols-3 mt-10 reveal-stagger">
         {Object.values(areas).map((a, i) => (
-          <div class="card reveal" style={`transition-delay:${i * 80}ms`}>
+          <div class="card card-parallax reveal" style={`transition-delay:${i * 80}ms`}>
             <h3 class="font-display text-xl text-plum-900">{a.name}</h3>
             <p class="mt-2 text-sm text-plum-700/90">{a.blurb}</p>
             <a href={`/locations/${a.slug}`} class="mt-4 inline-block text-sm font-semibold text-plum-600">Services in {a.name.split(',')[0]} →</a>
@@ -116,7 +114,6 @@ const mobileUnitImg = '/brand/board-banner.jpg';
     </div>
   </section>
 
-  <!-- EVENTS / MOBILE UNIT -->
   <section class="section">
     <div class="container-wide grid md:grid-cols-3 gap-8 items-start">
       <div class="md:col-span-1 reveal">
@@ -149,7 +146,8 @@ const mobileUnitImg = '/brand/board-banner.jpg';
     </div>
   </section>
 
-  <!-- DONATE CTA -->
+  <WingDivider variant="gold" flip />
+
   <section class="section bg-plum-fade text-mist-50 relative overflow-hidden">
     <svg aria-hidden="true" class="absolute -bottom-12 -left-8 h-48 w-48 text-sage-400/20 animate-wing-flutter" viewBox="0 0 64 64" fill="currentColor">
       <path d="M32 6c-10 10-26 10-30 7 3 13 16 23 30 23s27-10 30-23c-4 3-20 3-30-7z" opacity=".7"/>
@@ -167,7 +165,8 @@ const mobileUnitImg = '/brand/board-banner.jpg';
     </div>
   </section>
 
-  <!-- NEWSLETTER + CONTACT -->
+  <WingDivider variant="sage" />
+
   <section class="section">
     <div class="container-wide grid md:grid-cols-2 gap-10">
       <div class="reveal">

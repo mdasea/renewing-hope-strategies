@@ -1,13 +1,14 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
+import WingDivider from '@/components/WingDivider.astro';
 import { team } from '@/data/content';
 
 const placeholderPhoto = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80';
 ---
 <Layout title="Meet the Board" description="The volunteer board of Renewing Hope Strategies supports accessible, judgement-free mental health across the Inland Empire.">
   <section class="relative overflow-hidden bg-plum-900 text-mist-50">
-    <img src="/brand/group-meeting.jpg" alt="" aria-hidden="true" loading="eager" class="absolute inset-0 h-full w-full object-cover opacity-25" />
+    <img src="/brand/group-meeting.jpg" alt="" aria-hidden="true" loading="eager" class="absolute inset-0 h-full w-full object-cover opacity-25 animate-fade-in" />
     <div class="absolute inset-0 bg-gradient-to-br from-plum-950/80 to-plum-800/40"></div>
     <div class="container-wide relative py-14 md:py-18">
       <SectionHeading dark eyebrow="About" title="Our Team." subtitle="Renewing Hope Strategies is governed by a volunteer board committed to making mental-health care accessible to everyone, regardless of income." />
@@ -15,10 +16,12 @@ const placeholderPhoto = 'https://images.unsplash.com/photo-1534528741775-53994a
     </div>
   </section>
 
+  <WingDivider variant="sage" />
+
   <section class="section">
     <div class="container-wide grid gap-6 md:grid-cols-2 lg:grid-cols-4 reveal-stagger">
       {team.map((m, i) => (
-        <article class="card text-center reveal" style={`transition-delay:${i*70}ms`}>
+        <article class="card card-tilt text-center reveal" style={`transition-delay:${i*70}ms`}>
           <div class="h-24 w-24 rounded-full mx-auto overflow-hidden bg-gradient-to-br from-sage-200 to-plum-300">
             {m.photo ? (
               <img src={m.photo} alt={m.name} class="h-full w-full object-cover" loading="lazy" />

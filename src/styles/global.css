@@ -56,6 +56,10 @@
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-semibold transition focus-visible:outline-none;
   }
+  .btn:active {
+    transform: scale(0.97);
+    filter: brightness(0.92);
+  }
   .btn-primary {
     @apply btn bg-plum-700 text-white hover:bg-plum-800 shadow-soft;
   }
@@ -67,6 +71,35 @@
   }
   .btn-sage {
     @apply btn bg-sage-400 text-plum-950 hover:bg-sage-500 shadow-soft;
+  }
+
+  .btn-loading {
+    @apply relative pointer-events-none;
+  }
+  .btn-loading .btn-label {
+    visibility: hidden;
+  }
+  .btn-loading .btn-dots {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+  }
+  .btn-loading .btn-dots span {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: currentColor;
+    animation: dot-bounce 1.4s ease-in-out infinite both;
+  }
+  .btn-loading .btn-dots span:nth-child(2) {
+    animation-delay: 0.16s;
+  }
+  .btn-loading .btn-dots span:nth-child(3) {
+    animation-delay: 0.32s;
   }
 
   .eyebrow {
@@ -81,24 +114,231 @@
     @apply rounded-2xl bg-white border border-mist-200 shadow-soft p-6;
   }
 
+  .card-tilt-container {
+    perspective: 600px;
+  }
+  .card-tilt {
+    transition: transform 0.15s ease-out;
+    will-change: transform;
+  }
+
+  .card-parallax {
+    will-change: transform;
+  }
+  @supports (animation-timeline: view()) {
+    .card-parallax {
+      animation: drift linear both;
+      animation-timeline: view();
+      animation-range: entry -5% exit 105%;
+    }
+  }
+
   .field-label {
     @apply block text-sm font-semibold text-plum-800 mb-1.5;
   }
   .field-input {
-    @apply w-full rounded-lg border border-mist-200 bg-white px-4 py-3 text-ink placeholder:text-ink/40 focus:border-plum-400;
+    @apply w-full rounded-lg border border-mist-200 bg-white px-4 py-3 text-ink placeholder:text-ink/40 focus:border-plum-400 transition-colors;
   }
 
-  /* Scroll-reveal — base hidden state, .is-visible is added by IntersectionObserver.
-     Honors prefers-reduced-motion via the base-layer override above. */
+  .field-float {
+    position: relative;
+  }
+  .field-float .field-input {
+    padding-top: 1.5rem;
+    padding-bottom: 0.75rem;
+  }
+  .field-float-label {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.875rem;
+    color: var(--brand-plum);
+    opacity: 0.5;
+    pointer-events: none;
+    transition: all 0.2s cubic-bezier(0.21, 1, 0.36, 1);
+    transform-origin: left top;
+  }
+  .field-float:focus-within .field-float-label,
+  .field-float .field-float-label.is-floating {
+    transform: translateY(-120%) scale(0.75);
+    opacity: 1;
+    color: #512f7e;
+    font-weight: 600;
+  }
+  .field-float textarea.field-input ~ .field-float-label {
+    top: 1.25rem;
+  }
+  .field-float:focus-within textarea.field-input ~ .field-float-label,
+  .field-float textarea.field-input ~ .field-float-label.is-floating {
+    transform: translateY(-80%) scale(0.75);
+  }
+
+  .accordion-trigger {
+    @apply w-full flex items-center justify-between gap-3 cursor-pointer text-left;
+  }
+  .accordion-trigger .accordion-chevron {
+    transition: transform 0.35s cubic-bezier(0.21, 1, 0.36, 1);
+    flex-shrink: 0;
+  }
+  .accordion-trigger[aria-expanded="true"] .accordion-chevron {
+    transform: rotate(180deg);
+  }
+  .accordion-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s cubic-bezier(0.21, 1, 0.36, 1);
+  }
+  .accordion-panel.is-open {
+    grid-template-rows: 1fr;
+  }
+  .accordion-content {
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    height: 3px;
+    background: #b2d143;
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    will-change: transform;
+  }
+  @supports (animation-timeline: scroll()) {
+    .scroll-progress {
+      animation: scroll-progress auto linear;
+      animation-timeline: scroll();
+    }
+  }
+
+  .back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 40;
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.21, 1, 0.36, 1);
+  }
+  .back-to-top.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .toast-container {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    pointer-events: none;
+  }
+  .toast {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.25rem;
+    border-radius: 1rem;
+    background: white;
+    box-shadow: 0 10px 30px -12px rgba(82, 47, 126, 0.25);
+    border: 1px solid #e3d8ee;
+    font-size: 0.875rem;
+    color: #3a3142;
+    pointer-events: auto;
+    animation: toast-in 0.4s cubic-bezier(0.21, 1, 0.36, 1);
+    max-width: 360px;
+  }
+  .toast.toast-exit {
+    animation: toast-out 0.3s ease-in forwards;
+  }
+  .toast-success {
+    border-left: 4px solid #b2d143;
+  }
+  .toast-error {
+    border-left: 4px solid #e89938;
+  }
+
+  .impact-bar {
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+  }
+  .impact-bar.is-visible {
+    animation: bar-grow 1.1s cubic-bezier(0.21, 1, 0.36, 1) forwards;
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 24px;
+    height: 24px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #512f7e;
+    border-radius: 2px;
+    transition: transform 0.3s cubic-bezier(0.21, 1, 0.36, 1), opacity 0.2s ease;
+  }
+  .hamburger.is-open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger.is-open span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.is-open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .wing-divider {
+    position: relative;
+    height: 0;
+    pointer-events: none;
+  }
+  .wing-divider svg {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.3;
+  }
+
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(3px) saturate(0.85);
+    transition: opacity 0.7s cubic-bezier(0.21, 1, 0.36, 1), transform 0.7s cubic-bezier(0.21, 1, 0.36, 1), filter 0.7s cubic-bezier(0.21, 1, 0.36, 1);
+    will-change: opacity, transform, filter;
+  }
+  .scroll-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0) saturate(1);
+  }
+  .scroll-reveal-stagger > * {
+    @apply scroll-reveal;
+  }
+
   .reveal {
     opacity: 0;
     transform: translateY(18px);
-    transition: opacity 0.7s cubic-bezier(0.21, 1, 0.36, 1), transform 0.7s cubic-bezier(0.21, 1, 0.36, 1);
-    will-change: opacity, transform;
+    filter: blur(3px) saturate(0.85);
+    transition: opacity 0.7s cubic-bezier(0.21, 1, 0.36, 1), transform 0.7s cubic-bezier(0.21, 1, 0.36, 1), filter 0.7s cubic-bezier(0.21, 1, 0.36, 1);
+    will-change: opacity, transform, filter;
   }
   .reveal.is-visible {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0) saturate(1);
   }
   .reveal-stagger > * {
     @apply reveal;
@@ -113,3 +353,12 @@
     white-space: nowrap;
   }
 }
+
+  .is-visible-check {
+    transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .reveal.is-visible .is-visible-check {
+    background-color: #d8eba8;
+    color: #5d6f17;
+    transform: scale(1.1);
+  }

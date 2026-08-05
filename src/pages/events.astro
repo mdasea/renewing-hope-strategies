@@ -17,7 +17,7 @@ const hostImg = '/brand/park-people.jpg';
 ---
 <Layout title="Events & Mobile Unit Calendar" description="Find Renewing Hope Strategies' mobile mental-health unit across Hemet, Murrieta, and Riverside, plus community workshops and fundraisers.">
   <section class="relative overflow-hidden bg-plum-900 text-mist-50">
-    <img src={heroImg} alt="" aria-hidden="true" loading="eager" class="absolute inset-0 h-full w-full object-cover opacity-30" />
+    <img src={heroImg} alt="" aria-hidden="true" loading="eager" class="absolute inset-0 h-full w-full object-cover opacity-30 animate-fade-in" />
     <div class="absolute inset-0 bg-gradient-to-br from-plum-950/80 to-plum-800/40"></div>
     <div class="container-wide relative py-14 md:py-18">
       <SectionHeading
@@ -38,7 +38,7 @@ const hostImg = '/brand/park-people.jpg';
         <article class="card md:flex md:items-center md:justify-between gap-6 reveal" style={`transition-delay:${i*70}ms`}>
           <div class="flex items-start gap-5">
             <div class="text-center w-20 shrink-0">
-              <div class="font-display text-4xl text-plum-600">{new Date(ev.date).getDate()}</div>
+              <div class="font-display text-4xl text-plum-600 animate-pulse-soft" style="animation-iteration-count:2">{new Date(ev.date).getDate()}</div>
               <div class="text-xs uppercase tracking-wider text-plum-700/70">{new Date(ev.date).toLocaleString('en-US', { month: 'short' })}</div>
             </div>
             <div>

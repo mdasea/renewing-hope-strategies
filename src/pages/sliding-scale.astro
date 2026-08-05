@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
+import WingDivider from '@/components/WingDivider.astro';
 import { site } from '@/config/site';
 
 const heroImg = 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80';
@@ -8,28 +9,42 @@ const sideImg = 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?au
 ---
 <Layout title="Sliding Scale" description="Renewing Hope Strategies offers income-based sliding-scale fees so cost is never a barrier to counseling. Download the application in English or Spanish.">
   <section class="relative overflow-hidden bg-plum-900 text-mist-50">
-    <img src={heroImg} alt="" aria-hidden="true" loading="eager" class="absolute inset-0 h-full w-full object-cover opacity-25" />
+    <img src={heroImg} alt="" aria-hidden="true" loading="eager" class="absolute inset-0 h-full w-full object-cover opacity-25 animate-fade-in" />
     <div class="absolute inset-0 bg-gradient-to-br from-plum-950/80 to-plum-800/40"></div>
     <div class="container-wide relative py-14 md:py-18">
-      <p class="eyebrow !text-sage-300 mb-3">Sliding Scale</p>
-      <h1 class="font-display text-4xl md:text-5xl text-white">Cost should never be the reason you don't reach out.</h1>
-      <p class="mt-4 text-lg text-mist-100/90 max-w-prose">Renewing Hope Family Counseling Center, Inc. operates a Sliding Fee Discount Program. Your fee is based on your household income and family size — not on what you can prove you can pay. No one is turned away for inability to pay.</p>
+      <p class="eyebrow !text-sage-300 mb-3 reveal">Sliding Scale</p>
+      <h1 class="font-display text-4xl md:text-5xl text-white reveal" style="transition-delay:80ms">Cost should never be the reason you don't reach out.</h1>
+      <p class="mt-4 text-lg text-mist-100/90 max-w-prose reveal" style="transition-delay:140ms">Renewing Hope Family Counseling Center, Inc. operates a Sliding Fee Discount Program. Your fee is based on your household income and family size — not on what you can prove you can pay. No one is turned away for inability to pay.</p>
     </div>
   </section>
+
+  <WingDivider variant="sage" />
 
   <section class="section">
     <div class="container-wide grid md:grid-cols-5 gap-10">
       <div class="md:col-span-3 space-y-6 reveal">
         <div>
           <h2 class="font-display text-2xl text-plum-900">How the sliding scale works</h2>
-          <ol class="mt-4 space-y-3">
-            <li class="flex gap-3"><span class="font-display text-plum-600 text-xl">1</span><span class="text-plum-700/90">Download and complete the application (English or Spanish).</span></li>
-            <li class="flex gap-3"><span class="font-display text-plum-600 text-xl">2</span><span class="text-plum-700/90">Provide proof of household income (recent pay stub, tax return, or benefits letter) and family size.</span></li>
-            <li class="flex gap-3"><span class="font-display text-plum-600 text-xl">3</span><span class="text-plum-700/90">Our team confirms your sliding-scale level within a few business days.</span></li>
-            <li class="flex gap-3"><span class="font-display text-plum-600 text-xl">4</span><span class="text-plum-700/90">Your discounted fee applies to every session from that point on — no surprises.</span></li>
+          <ol class="mt-4 space-y-3 reveal-stagger">
+            <li class="flex gap-3 reveal">
+              <span class="font-display flex-shrink-0 w-8 h-8 rounded-full bg-plum-100 text-plum-600 flex items-center justify-center text-base transition-colors duration-500 is-visible-check">1</span>
+              <span class="text-plum-700/90 pt-1">Download and complete the application (English or Spanish).</span>
+            </li>
+            <li class="flex gap-3 reveal" style="transition-delay:80ms">
+              <span class="font-display flex-shrink-0 w-8 h-8 rounded-full bg-plum-100 text-plum-600 flex items-center justify-center text-base transition-colors duration-500 is-visible-check">2</span>
+              <span class="text-plum-700/90 pt-1">Provide proof of household income (recent pay stub, tax return, or benefits letter) and family size.</span>
+            </li>
+            <li class="flex gap-3 reveal" style="transition-delay:160ms">
+              <span class="font-display flex-shrink-0 w-8 h-8 rounded-full bg-plum-100 text-plum-600 flex items-center justify-center text-base transition-colors duration-500 is-visible-check">3</span>
+              <span class="text-plum-700/90 pt-1">Our team confirms your sliding-scale level within a few business days.</span>
+            </li>
+            <li class="flex gap-3 reveal" style="transition-delay:240ms">
+              <span class="font-display flex-shrink-0 w-8 h-8 rounded-full bg-plum-100 text-plum-600 flex items-center justify-center text-base transition-colors duration-500 is-visible-check">4</span>
+              <span class="text-plum-700/90 pt-1">Your discounted fee applies to every session from that point on — no surprises.</span>
+            </li>
           </ol>
         </div>
-        <div class="card bg-plum-900 text-mist-100 border-plum-700">
+        <div class="card bg-plum-900 text-mist-100 border-plum-700 reveal">
           <h3 class="font-display text-lg text-white">If you cannot pay anything right now</h3>
           <p class="mt-2 text-mist-200 text-sm">Apply anyway. We hold a charity-care fund for community members in acute financial hardship. Use the contact form or call us at <a href={`tel:${site.phoneHref}`} class="font-semibold underline">{site.phoneDisplay}</a> — we will work with you.</p>
         </div>

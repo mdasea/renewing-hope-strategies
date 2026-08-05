@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
+import WingDivider from '@/components/WingDivider.astro';
 import { services } from '@/data/services';
 import { areas, type ServiceArea } from '@/config/site';
 
@@ -29,15 +30,17 @@ const schema = {
 >
   <section class="bg-mesh-plum bg-[length:200%_200%] animate-gradient-pan py-14 md:py-18">
     <div class="container-wide">
-      <p class="eyebrow !text-sage-700 mb-3">{area.name}</p>
-      <h1 class="font-display text-3xl md:text-5xl text-plum-900 leading-tight">{service.name} in {cityName}, CA</h1>
-      <p class="mt-4 text-lg text-plum-700/90 max-w-prose">{service.tagline} {area.blurb}</p>
-      <div class="mt-6 flex flex-wrap gap-3">
+      <p class="eyebrow !text-sage-700 mb-3 reveal">{area.name}</p>
+      <h1 class="font-display text-3xl md:text-5xl text-plum-900 leading-tight reveal" style="transition-delay:80ms">{service.name} in {cityName}, CA</h1>
+      <p class="mt-4 text-lg text-plum-700/90 max-w-prose reveal" style="transition-delay:140ms">{service.tagline} {area.blurb}</p>
+      <div class="mt-6 flex flex-wrap gap-3 reveal" style="transition-delay:200ms">
         <a href="/contact" class="btn-primary">Request an appointment</a>
         <a href={`/services/${service.slug}`} class="btn-secondary text-sm">About {service.short.toLowerCase()} →</a>
       </div>
     </div>
   </section>
+
+  <WingDivider variant="sage" />
 
   <section class="section">
     <div class="container-wide grid md:grid-cols-3 gap-10">

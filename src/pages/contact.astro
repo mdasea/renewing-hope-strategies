@@ -8,7 +8,7 @@ const contactImg = 'https://images.unsplash.com/photo-1497366216548-37526070297c
 ---
 <Layout title="Contact" description="Reach Renewing Hope Strategies in Hemet, Murrieta, and Riverside, CA. Call (951) 465-3665 or email office@renewing-hope.org.">
   <section class="relative overflow-hidden bg-plum-900 text-mist-50">
-    <img src={contactImg} alt="" aria-hidden="true" loading="eager" class="absolute inset-0 h-full w-full object-cover opacity-25" />
+    <img src={contactImg} alt="" aria-hidden="true" loading="eager" class="absolute inset-0 h-full w-full object-cover opacity-25 animate-fade-in" />
     <div class="absolute inset-0 bg-gradient-to-br from-plum-950/80 to-plum-800/40"></div>
     <div class="container-wide relative py-14 md:py-18">
       <SectionHeading
@@ -23,15 +23,15 @@ const contactImg = 'https://images.unsplash.com/photo-1497366216548-37526070297c
   <section class="section">
     <div class="container-wide grid md:grid-cols-3 gap-10">
       <aside class="space-y-6 reveal-stagger">
-        <div class="card reveal">
+        <div class="card card-tilt reveal">
           <h3 class="font-display text-lg text-plum-900">Phone</h3>
           <p class="mt-2"><a href={`tel:${site.phoneHref}`} class="font-semibold text-plum-600 text-lg">{site.phoneDisplay}</a></p>
         </div>
-        <div class="card reveal" style="transition-delay:60ms">
+        <div class="card card-tilt reveal" style="transition-delay:60ms">
           <h3 class="font-display text-lg text-plum-900">Email</h3>
           <p class="mt-2"><a href={`mailto:${site.email}`} class="font-semibold text-plum-600">{site.email}</a></p>
         </div>
-        <div class="card reveal" style="transition-delay:120ms">
+        <div class="card card-tilt reveal" style="transition-delay:120ms">
           <h3 class="font-display text-lg text-plum-900">Hours</h3>
           <p class="mt-2 text-sm text-plum-700/90">{site.hours.weekday}<br/>{site.hours.friday}</p>
         </div>

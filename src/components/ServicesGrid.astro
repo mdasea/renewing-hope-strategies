@@ -14,8 +14,8 @@ import ServiceIcon from './ServiceIcon.astro';
 
     <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3 reveal-stagger">
       {services.map((s, i) => (
-        <a href={`/services/${s.slug}`} class="card group hover:shadow-lift hover:-translate-y-1 transition reveal" style={`transition-delay:${i * 70}ms`}>
-          <div class="h-12 w-12 rounded-xl bg-plum-50 text-plum-600 flex items-center justify-center group-hover:bg-sage-100 group-hover:text-sage-700 transition">
+        <a href={`/services/${s.slug}`} class="card card-tilt group hover:shadow-lift hover:-translate-y-1 transition reveal" style={`transition-delay:${i * 70}ms`}>
+          <div class="h-12 w-12 rounded-xl bg-plum-50 text-plum-600 flex items-center justify-center group-hover:bg-sage-100 group-hover:text-sage-700 group-hover:scale-110 group-hover:-translate-y-0.5 transition-all duration-300">
             <ServiceIcon name={s.icon} />
           </div>
           <h3 class="font-display text-xl mt-4 text-plum-900">{s.name}</h3>
@@ -23,8 +23,8 @@ import ServiceIcon from './ServiceIcon.astro';
           <span class="mt-4 inline-block text-sm font-semibold text-plum-600 group-hover:text-sage-700 transition">Learn more →</span>
         </a>
       ))}
-      <a href="/sliding-scale" class="card bg-plum-900 text-mist-100 border-plum-700 hover:shadow-lift transition reveal" style={`transition-delay:${services.length * 70}ms`}>
-        <div class="h-12 w-12 rounded-xl bg-gold-400/20 text-gold-400 flex items-center justify-center font-display text-xl">$</div>
+      <a href="/sliding-scale" class="card card-tilt bg-plum-900 text-mist-100 border-plum-700 hover:shadow-lift transition reveal" style={`transition-delay:${services.length * 70}ms`}>
+        <div class="h-12 w-12 rounded-xl bg-gold-400/20 text-gold-400 flex items-center justify-center font-display text-xl group-hover:scale-110 transition-transform duration-300">$</div>
         <h3 class="font-display text-xl mt-4 text-white">Sliding-Scale Fees</h3>
         <p class="mt-2 text-sm text-mist-200">Income-based fee so cost is never the reason you don't get help. Download the app in English or Spanish.</p>
         <span class="mt-4 inline-block text-sm font-semibold text-gold-400">How it works →</span>

@@ -4,6 +4,9 @@ import '@/styles/global.css';
 import CrisisBar from '@/components/CrisisBar.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
+import ScrollProgress from '@/components/ScrollProgress.astro';
+import BackToTop from '@/components/BackToTop.astro';
+import Toast from '@/components/Toast.astro';
 import { ClientRouter } from 'astro:transitions';
 
 export interface Props {
@@ -12,7 +15,6 @@ export interface Props {
   path?: string;
   ogImage?: string;
   schema?: object | object[];
-  /** Hides the 988 crisis bar (rare; default false) */
   hideCrisisBar?: boolean;
 }
 
@@ -57,14 +59,12 @@ const schemaArray = [orgSchema, ...(Array.isArray(schema) ? schema : schema ? [s
     <link rel="icon" type="image/png" href="/brand/logo.png" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- View Transitions for SPA-like navigation (graceful, opt-in by browser support) -->
     <ClientRouter />
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
 
-    <!-- Open Graph -->
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
@@ -73,7 +73,6 @@ const schemaArray = [orgSchema, ...(Array.isArray(schema) ? schema : schema ? [s
     <meta property="og:site_name" content={site.name} />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Fonts: preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -81,18 +80,17 @@ const schemaArray = [orgSchema, ...(Array.isArray(schema) ? schema : schema ? [s
       href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
     />
 
-    <!-- Crisis info surfaced for assistive tech in case bar is hidden -->
     {!hideCrisisBar && (
       <meta name="x-crisis-resource" content="988 Suicide & Crisis Lifeline — call or text 988" />
     )}
 
-    <!-- Structured data -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaArray[0])} />
     {schemaArray.length > 1 && (
       <script type="application/ld+json" set:html={JSON.stringify(schemaArray.slice(1))} />
     )}
   </head>
   <body>
+    <ScrollProgress />
     <a href="#main" class="sr-only-focusable absolute left-2 top-2 z-50 bg-plum-700 text-white px-4 py-2 rounded">Skip to main content</a>
     {!hideCrisisBar && <CrisisBar />}
     <Header />
@@ -100,12 +98,22 @@ const schemaArray = [orgSchema, ...(Array.isArray(schema) ? schema : schema ? [s
       <slot />
     </main>
     <Footer />
+    <BackToTop />
+    <Toast />
     <script>
-      // Astro bundles this client-side; re-init on view transitions too.
-      import { initReveal, initCountUp } from '@/scripts/motion';
+      import { initReveal, initCountUp, initAccordions, initBackToTop, initFloatLabels, initCardTilt, initScrollProgressFallback, initParallaxFallback, initHamburgerMorph, initLogoEntrance, initFormAJAX } from '@/scripts/motion';
       document.addEventListener('astro:after-swap', () => {
         initReveal();
         initCountUp();
+        initAccordions();
+        initBackToTop();
+        initFloatLabels();
+        initCardTilt();
+        initScrollProgressFallback();
+        initParallaxFallback();
+        initHamburgerMorph();
+        initLogoEntrance();
+        initFormAJAX();
       });
     </script>
   </body>

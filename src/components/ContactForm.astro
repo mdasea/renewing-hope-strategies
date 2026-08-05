@@ -7,41 +7,46 @@ const { compact = false } = Astro.props;
   class:list={["grid gap-4", compact ? "sm:grid-cols-2" : "md:grid-cols-2"]}
   action={`https://formspree.io/f/${site.forms.contact}`}
   method="POST"
+  data-ajax
   aria-label="Contact Renewing Hope Strategies"
 >
-  <div>
-    <label for="cf-first" class="field-label">First name *</label>
-    <input id="cf-first" name="first_name" class="field-input" type="text" required autocomplete="given-name" />
+  <div class="field-float">
+    <input id="cf-first" name="first_name" class="field-input" type="text" required autocomplete="given-name" placeholder=" " />
+    <label for="cf-first" class="field-float-label">First name *</label>
   </div>
-  <div>
-    <label for="cf-last" class="field-label">Last name *</label>
-    <input id="cf-last" name="last_name" class="field-input" type="text" required autocomplete="family-name" />
+  <div class="field-float">
+    <input id="cf-last" name="last_name" class="field-input" type="text" required autocomplete="family-name" placeholder=" " />
+    <label for="cf-last" class="field-float-label">Last name *</label>
   </div>
-  <div class={compact ? "sm:col-span-2" : "md:col-span-2"}>
-    <label for="cf-email" class="field-label">Email *</label>
-    <input id="cf-email" name="email" class="field-input" type="email" required autocomplete="email" />
+  <div class:list={["field-float", compact ? "sm:col-span-2" : "md:col-span-2"]}>
+    <input id="cf-email" name="email" class="field-input" type="email" required autocomplete="email" placeholder=" " />
+    <label for="cf-email" class="field-float-label">Email *</label>
   </div>
-  <div class={compact ? "sm:col-span-2" : "md:col-span-2"}>
-    <label for="cf-phone" class="field-label">Phone (optional)</label>
-    <input id="cf-phone" name="phone" class="field-input" type="tel" autocomplete="tel" />
+  <div class:list={["field-float", compact ? "sm:col-span-2" : "md:col-span-2"]}>
+    <input id="cf-phone" name="phone" class="field-input" type="tel" autocomplete="tel" placeholder=" " />
+    <label for="cf-phone" class="field-float-label">Phone (optional)</label>
   </div>
-  <div class={compact ? "sm:col-span-2" : "md:col-span-2"}>
-    <label for="cf-subject" class="field-label">Subject</label>
-    <input id="cf-subject" name="subject" class="field-input" type="text" />
+  <div class:list={["field-float", compact ? "sm:col-span-2" : "md:col-span-2"]}>
+    <input id="cf-subject" name="subject" class="field-input" type="text" placeholder=" " />
+    <label for="cf-subject" class="field-float-label">Subject</label>
   </div>
-  <div class={compact ? "sm:col-span-2" : "md:col-span-2"}>
-    <label for="cf-msg" class="field-label">Your message *</label>
-    <textarea id="cf-msg" name="message" rows="4" class="field-input" required></textarea>
+  <div class:list={["field-float", compact ? "sm:col-span-2" : "md:col-span-2"]}>
+    <textarea id="cf-msg" name="message" rows="4" class="field-input" required placeholder=" "></textarea>
+    <label for="cf-msg" class="field-float-label">Your message *</label>
   </div>
-  <div class={compact ? "sm:col-span-2" : "md:col-span-2"}>
+  <div class:list={[compact ? "sm:col-span-2" : "md:col-span-2"]}>
     <label class="flex items-start gap-3 text-sm text-plum-700/90">
       <input type="checkbox" name="consent" required class="mt-1" />
       <span>I consent to be contacted by Renewing Hope Strategies about my request. This is not a crisis line — if you are in danger or in crisis, call or text <a href="tel:988" class="underline font-semibold">988</a>.</span>
     </label>
   </div>
-  <!-- Honeypot -->
   <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
-  <div class={compact ? "sm:col-span-2" : "md:col-span-2"}>
-    <button type="submit" class="btn-primary w-full md:w-auto">Send message</button>
+  <div class:list={[compact ? "sm:col-span-2" : "md:col-span-2"]}>
+    <button type="submit" class="btn-primary w-full md:w-auto relative">
+      <span class="btn-label">Send message</span>
+      <span class="btn-dots hidden">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
   </div>
 </form>
