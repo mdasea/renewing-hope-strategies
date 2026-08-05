@@ -9,7 +9,6 @@ import ServicesGrid from '@/components/ServicesGrid.astro';
 import Stats from '@/components/Stats.astro';
 import ContactForm from '@/components/ContactForm.astro';
 import NewsletterForm from '@/components/NewsletterForm.astro';
-import VideoEmbed from '@/components/VideoEmbed.astro';
 
 const upcoming = [...events].sort((a,b) => a.date.localeCompare(b.date)).slice(0,3);
 
@@ -20,42 +19,35 @@ const mobileUnitImg = '/brand/board-banner.jpg';
 ---
 <Layout>
   <!-- HERO -->
-  <section class="relative overflow-hidden bg-mesh-plum bg-[length:200%_200%] animate-gradient-pan">
-    <div class="absolute inset-0 bg-grain [background-size:18px_18px] opacity-50" aria-hidden="true"></div>
-    <div class="container-wide relative py-20 md:py-28 grid md:grid-cols-2 gap-10 items-center">
-      <div class="reveal">
-        <p class="eyebrow !text-sage-700 mb-4">A 501(c)(3) Nonprofit · Hemet · Murrieta · Riverside, CA</p>
-        <h1 class="font-display text-4xl md:text-6xl leading-[1.05] text-plum-900">
+  <section class="relative overflow-hidden bg-plum-950">
+    <video
+      autoplay muted loop playsinline
+      poster={heroImg}
+      class="absolute inset-0 h-full w-full object-cover"
+      aria-hidden="true"
+    >
+      <source src="/brand/hero-video.mp4" type="video/mp4" />
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-r from-plum-950/85 via-plum-950/50 to-transparent" aria-hidden="true"></div>
+    <div class="container-wide relative py-20 md:py-28">
+      <div class="reveal max-w-xl">
+        <p class="eyebrow !text-sage-300 mb-4">A 501(c)(3) Nonprofit · Hemet · Murrieta · Riverside, CA</p>
+        <h1 class="font-display text-4xl md:text-6xl leading-[1.05] text-white">
           Recovery is possible.<br/>
-          <span class="text-plum-600">We can help you get there.</span>
+          <span class="text-sage-300">We can help you get there.</span>
         </h1>
-        <p class="mt-6 text-lg text-plum-700/90 max-w-prose">
+        <p class="mt-6 text-lg text-mist-100/90 max-w-prose">
           Judgement-free mental-health and wellness counseling for individuals and families —
           on a sliding scale, in person or through our mobile unit. No one is turned away for inability to pay.
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
           <a href="/services" class="btn-primary">Get help →</a>
           <a href="/donate" class="btn-gold">Donate</a>
-          <a href={`tel:${site.phoneHref}`} class="btn-secondary">Call {site.phoneDisplay}</a>
+          <a href={`tel:${site.phoneHref}`} class="btn-secondary !bg-white/10 !text-white !border-white/30 hover:!bg-white/20">Call {site.phoneDisplay}</a>
         </div>
-        <p class="mt-6 text-sm text-plum-700/80">
-          In crisis right now? <a href="tel:988" class="font-semibold underline">Call or text 988</a> — free &amp; confidential, 24/7.
+        <p class="mt-6 text-sm text-mist-200/80">
+          In crisis right now? <a href="tel:988" class="font-semibold underline text-sage-300">Call or text 988</a> — free &amp; confidential, 24/7.
         </p>
-      </div>
-
-      <div class="relative reveal" style="transition-delay:120ms">
-        <div class="aspect-[4/5] rounded-3xl shadow-lift relative overflow-hidden ring-1 ring-plum-300/40 animate-float">
-          <img src={heroImg} alt="Community members and counselors gathered for Renewing Hope Strategies" class="w-full h-full object-cover" loading="eager" />
-          <div class="absolute inset-0 bg-gradient-to-t from-plum-950/70 via-plum-900/20 to-transparent"></div>
-          <div class="absolute bottom-6 left-6 right-6 text-mist-50">
-            <p class="font-display text-xl leading-snug">"Hope is the thing with feathers that perches in the soul."</p>
-            <p class="mt-2 text-xs uppercase tracking-wider text-sage-300">— Emily Dickinson</p>
-          </div>
-        </div>
-        <div class="absolute -bottom-5 -left-5 card !p-4 max-w-[14rem] shadow-lift">
-          <p class="text-xs eyebrow">Mobile Unit</p>
-          <p class="text-sm mt-1 text-plum-700/90">Counseling that comes to your community. <a href="/events" class="font-semibold text-plum-600">See schedule →</a></p>
-        </div>
       </div>
     </div>
   </section>
@@ -90,10 +82,18 @@ const mobileUnitImg = '/brand/board-banner.jpg';
   <!-- VIDEO -->
   <section class="section bg-mist-100">
     <div class="container-wide">
-      <SectionHeading align="center" eyebrow="See the hope" title="What Renewing Hope is all about." subtitle="Watch a short introduction to our mission and the people we serve across the Inland Empire." />
+      <SectionHeading align="center" eyebrow="See the hope" title="Watch us in action." subtitle="A glimpse into the heart of Renewing Hope Strategies and the communities we serve." />
       <div class="mt-8 max-w-3xl mx-auto reveal">
-        <VideoEmbed videoId="dQw4w9WgXcQ" title="Renewing Hope Strategies — Our Mission" />
-        <p class="mt-3 text-xs text-center text-plum-700/60">This is a placeholder video. Replace the <code>videoId</code> in <code>src/pages/index.astro</code> with your own YouTube or Vimeo video ID.</p>
+        <div class="aspect-video rounded-2xl shadow-lift overflow-hidden bg-plum-950">
+          <video
+            autoplay muted loop playsinline
+            poster={heroImg}
+            class="w-full h-full object-cover"
+          >
+            <source src="https://video.wixstatic.com/video/11062b_12932822442c48c0b692ab26982436a5/1080p/mp4/file.mp4" type="video/mp4" />
+            <source src="https://video.wixstatic.com/video/11062b_12932822442c48c0b692ab26982436a5/720p/mp4/file.mp4" type="video/mp4" />
+          </video>
+        </div>
       </div>
     </div>
   </section>

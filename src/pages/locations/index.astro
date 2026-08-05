@@ -3,11 +3,11 @@ import Layout from '@/layouts/Layout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import { areas } from '@/config/site';
 
-const heroImg = 'https://images.unsplash.com/photo-1473042904451-00171c2fecbd?auto=format&fit=crop&w=1400&q=80';
+const heroImg = 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80';
 const cityImages: Record<string, string> = {
-  hemet: 'https://images.unsplash.com/photo-1502086223501-7fe6d314c5d3?auto=format&fit=crop&w=600&q=80',
-  murrieta: 'https://images.unsplash.com/photo-1500382017468-9049fedbdbe8?auto=format&fit=crop&w=600&q=80',
-  riverside: 'https://images.unsplash.com/photo-1473042904451-00171c2fecbd?auto=format&fit=crop&w=600&q=80'
+  hemet: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=600&q=80',
+  murrieta: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80',
+  riverside: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80'
 };
 ---
 <Layout title="Locations" description="Renewing Hope Strategies serves Hemet, Murrieta, and Riverside, CA with office-based care, telehealth, and a mobile counseling unit.">
@@ -16,6 +16,7 @@ const cityImages: Record<string, string> = {
     <div class="absolute inset-0 bg-gradient-to-br from-plum-950/80 to-plum-800/40"></div>
     <div class="container-wide relative py-14 md:py-18">
       <SectionHeading
+        dark
         eyebrow="Where we serve"
         title="Care across the Inland Empire."
         subtitle="Our team offers office-based counseling, telehealth across California, and a traveling mobile unit. Whatever your town, we will find a way to see you."
