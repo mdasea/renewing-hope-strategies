@@ -1,0 +1,23 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { site } from '@/config/site';
+---
+<Layout title="Page not found" description="The page you were looking for could not be found.">
+  <section class="section">
+    <div class="container-prose text-center reveal">
+      <svg aria-hidden="true" class="mx-auto h-20 w-20 text-plum-400 animate-wing-flutter mb-4" viewBox="0 0 64 64" fill="currentColor">
+        <path d="M32 6c-10 10-26 10-30 7 3 13 16 23 30 23s27-10 30-23c-4 3-20 3-30-7z" opacity=".8"/>
+      </svg>
+      <p class="eyebrow">404</p>
+      <h1 class="font-display text-4xl text-plum-900 mt-3">That page took a different path.</h1>
+      <p class="mt-4 text-plum-700/90">Let's get you back on track — and to the help you came for.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="/" class="btn-primary">Home</a>
+        <a href="/services" class="btn-secondary text-sm">Services</a>
+        <a href="/contact" class="btn-secondary text-sm">Contact</a>
+        <a href={`tel:${site.phoneHref}`} class="btn-secondary text-sm">Call {site.phoneDisplay}</a>
+      </div>
+      <p class="mt-10 text-sm text-plum-700/70">In crisis? Call or text <a href="tel:988" class="font-semibold underline">988</a> — free and confidential, 24/7.</p>
+    </div>
+  </section>
+</Layout>

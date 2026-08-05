@@ -1,0 +1,38 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import { site } from '@/config/site';
+---
+<Layout title="Get Involved" description="Volunteer, donate, partner, or join the board of Renewing Hope Strategies. Help bring accessible mental-health care to the Inland Empire.">
+  <section class="bg-mesh-plum bg-[length:200%_200%] animate-gradient-pan py-14 md:py-18">
+    <div class="container-wide">
+      <SectionHeading eyebrow="Get involved" title="Be part of the hope." subtitle="Whether you give an hour, a dollar, or a career — there is a place for you in this work." />
+    </div>
+  </section>
+
+  <section class="section" id="volunteer">
+    <div class="container-wide grid md:grid-cols-3 gap-6 reveal-stagger">
+      <a href="/donate" class="card hover:shadow-lift transition reveal">
+        <h3 class="font-display text-xl text-plum-900">Donate</h3>
+        <p class="mt-2 text-sm text-plum-700/90">One-time or monthly. Tax-deductible. Funds sliding-scale sessions and the mobile unit.</p>
+      </a>
+      <a href={`mailto:${site.email}?subject=Volunteer%20with%20Renewing%20Hope`} class="card hover:shadow-lift transition reveal" style="transition-delay:80ms">
+        <h3 class="font-display text-xl text-plum-900">Volunteer</h3>
+        <p class="mt-2 text-sm text-plum-700/90">Licensed clinicians, graduate interns, event helpers, and bilingual translators welcome.</p>
+      </a>
+      <a href="/events" class="card hover:shadow-lift transition reveal" style="transition-delay:160ms">
+        <h3 class="font-display text-xl text-plum-900">Host a mobile-unit stop</h3>
+        <p class="mt-2 text-sm text-plum-700/90">Libraries, shelters, churches, and community centers — partner with us.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="section bg-mist-100">
+    <div class="container-prose reveal">
+      <SectionHeading align="center" eyebrow="Clinicians" title="Practicum & licensure hours" subtitle="We supervise AMFT, ASW, and APCC associates who want to serve under-resourced communities. Email us with your program information and availability." />
+      <div class="mt-6 text-center">
+        <a href={`mailto:${site.email}?subject=Associate%20clinician%20inquiry`} class="btn-primary">Email about joining the team</a>
+      </div>
+    </div>
+  </section>
+</Layout>

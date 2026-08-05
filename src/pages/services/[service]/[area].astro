@@ -1,0 +1,83 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import { services } from '@/data/services';
+import { areas, type ServiceArea } from '@/config/site';
+
+export function getStaticPaths() {
+  return services.flatMap(s =>
+    (Object.keys(areas) as ServiceArea[]).map(a => ({
+      params: { service: s.slug, area: a },
+      props: { service: s, area: areas[a] }
+    }))
+  );
+}
+const { service, area } = Astro.props;
+const cityName = area.name.split(',')[0];
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalBusiness',
+  name: `${service.name} in ${area.name}`,
+  url: `${Astro.url.pathname}`,
+  areaServed: area.name
+};
+---
+<Layout
+  title={`${service.name} in ${area.name}`}
+  description={`${service.short} counseling in ${cityName}, CA on a sliding scale. Judgement-free nonprofit care in-office, by telehealth, and via our mobile unit. ${service.tagline}`}
+  schema={schema}
+>
+  <section class="bg-mesh-plum bg-[length:200%_200%] animate-gradient-pan py-14 md:py-18">
+    <div class="container-wide">
+      <p class="eyebrow !text-sage-700 mb-3">{area.name}</p>
+      <h1 class="font-display text-3xl md:text-5xl text-plum-900 leading-tight">{service.name} in {cityName}, CA</h1>
+      <p class="mt-4 text-lg text-plum-700/90 max-w-prose">{service.tagline} {area.blurb}</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="/contact" class="btn-primary">Request an appointment</a>
+        <a href={`/services/${service.slug}`} class="btn-secondary text-sm">About {service.short.toLowerCase()} →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-wide grid md:grid-cols-3 gap-10">
+      <article class="md:col-span-2 space-y-6 reveal">
+        <h2 class="font-display text-2xl text-plum-900">{service.short} counseling in {cityName}</h2>
+        {service.overview.map(p => <p class="text-plum-700/90">{p}</p>)}
+
+        <div class="card">
+          <h3 class="font-display text-lg text-plum-900">Signs it might be time</h3>
+          <ul class="mt-3 space-y-2">
+            {service.signs.map(s => <li class="flex gap-3 text-plum-700/90"><span aria-hidden="true" class="text-plum-400">●</span>{s}</li>)}
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-display text-lg text-plum-900">How our {cityName.toLowerCase()} team helps</h3>
+          <ul class="mt-3 space-y-2">
+            {service.howWeHelp.map(h => <li class="flex gap-3 text-plum-700/90"><span aria-hidden="true" class="text-sage-600">✓</span>{h}</li>)}
+          </ul>
+        </div>
+      </article>
+
+      <aside class="space-y-6">
+        <div class="card bg-plum-900 text-mist-100 border-plum-700 reveal">
+          <p class="eyebrow !text-gold-400">Crisis note</p>
+          <p class="mt-2 text-sm">If you are in danger or having thoughts of suicide, call or text <a href="tel:988" class="font-semibold underline">988</a> — free &amp; confidential, 24/7.</p>
+        </div>
+        <div class="card reveal" style="transition-delay:80ms">
+          <h3 class="font-display text-lg text-plum-900">Other ways to be seen in {cityName}</h3>
+          <div class="mt-3 grid gap-2">
+            {services.filter(s => s.slug !== service.slug).map(s => (
+              <a href={`/services/${s.slug}/${area.slug}`} class="block rounded-xl bg-mist-100 px-3 py-2 text-sm text-plum-700 hover:bg-mist-200">{s.name} in {cityName}</a>
+            ))}
+          </div>
+        </div>
+        <div class="card reveal" style="transition-delay:160ms">
+          <h3 class="font-display text-lg text-plum-900">Sliding-scale fees</h3>
+          <p class="mt-2 text-sm text-plum-700/90">Cost should never be the reason you don't reach out. Our fee is based on your household income. <a href="/sliding-scale" class="font-semibold text-plum-600">Download the form →</a></p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Layout>

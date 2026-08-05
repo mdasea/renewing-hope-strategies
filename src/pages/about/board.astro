@@ -1,0 +1,36 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import { team } from '@/data/content';
+---
+<Layout title="Meet the Board" description="The volunteer board of Renewing Hope Strategies supports accessible, judgement-free mental health across the Inland Empire.">
+  <section class="bg-mesh-plum bg-[length:200%_200%] animate-gradient-pan py-14 md:py-18">
+    <div class="container-wide">
+      <SectionHeading eyebrow="About" title="Our Team." subtitle="Renewing Hope Strategies is governed by a volunteer board committed to making mental-health care accessible to everyone, regardless of income." />
+      <p class="mt-6 text-plum-700/90 max-w-prose">Email <a href="mailto:office@renewing-hope.org" class="font-semibold underline">office@renewing-hope.org</a> or call <a href="tel:+19514653665" class="font-semibold underline">(951) 465-3665</a> to reach us.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-wide grid gap-6 md:grid-cols-2 lg:grid-cols-4 reveal-stagger">
+      {team.map((m, i) => (
+        <article class="card text-center reveal" style={`transition-delay:${i*70}ms`}>
+          <div class="h-24 w-24 rounded-full mx-auto bg-gradient-to-br from-sage-200 to-plum-300 grid place-items-center text-3xl font-display text-plum-700">
+            {m.name.replace(/^\[(.*)\]$/,'?').slice(0,1)}
+          </div>
+          <h3 class="mt-4 font-display text-lg text-plum-900">{m.name}</h3>
+          {m.credentials && <p class="text-xs uppercase tracking-wider text-plum-600">{m.credentials}</p>}
+          <p class="text-sm text-plum-700/90">{m.role}</p>
+          <p class="mt-3 text-xs text-plum-700/80">{m.bio}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="container-wide mt-12">
+      <div class="card bg-plum-900 text-mist-100 border-plum-700 reveal">
+        <h3 class="font-display text-xl text-white">Join us.</h3>
+        <p class="mt-2 text-mist-200">We are always looking for board members, clinicians, and volunteers who share our commitment to accessible mental-health care. <a href="/get-involved#volunteer" class="font-semibold text-gold-400">Get involved →</a></p>
+      </div>
+    </div>
+  </section>
+</Layout>

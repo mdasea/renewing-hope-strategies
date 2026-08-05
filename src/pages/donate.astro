@@ -1,0 +1,65 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import GivebutterWidget from '@/components/GivebutterWidget.astro';
+import Stats from '@/components/Stats.astro';
+import { site } from '@/config/site';
+---
+<Layout title="Donate" description="Donate to Renewing Hope Strategies, a 501(c)(3) nonprofit. Tax-deductible gifts fund sliding-scale counseling and our mobile mental-health unit across the Inland Empire.">
+  <section class="bg-mesh-plum bg-[length:200%_200%] animate-gradient-pan py-14 md:py-18">
+    <div class="container-wide grid md:grid-cols-2 gap-10 items-center">
+      <div class="reveal">
+        <p class="eyebrow !text-sage-700 mb-3">Give hope</p>
+        <h1 class="font-display text-4xl md:text-5xl text-plum-900">Your gift renews hope.</h1>
+        <p class="mt-4 text-lg text-plum-700/90 max-w-prose">Renewing Hope Strategies is a registered 501(c)(3) nonprofit. Every dollar funds counseling for people who could not otherwise afford it — and keeps our mobile unit on the road.</p>
+        <p class="mt-4 text-sm text-plum-700/80">EIN {site.ein} · Tax-deductible to the extent allowed by law. An automatic tax-compliant receipt is emailed to you after every gift.</p>
+      </div>
+      <div class="reveal" style="transition-delay:120ms"><GivebutterWidget /></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-wide">
+      <SectionHeading align="center" eyebrow="Your impact" title="Where your money goes." />
+      <Stats />
+      <div class="mt-12 grid md:grid-cols-3 gap-6 reveal-stagger">
+        <div class="card reveal">
+          <p class="font-display text-3xl text-plum-600">$25</p>
+          <p class="mt-1 text-sm text-plum-700/90">Funds one sliding-scale counseling session for someone who couldn't otherwise afford care.</p>
+        </div>
+        <div class="card reveal" style="transition-delay:80ms">
+          <p class="font-display text-3xl text-plum-600">$100</p>
+          <p class="mt-1 text-sm text-plum-700/90">Pays for a mobile-unit stop in a community without easy access to mental-health care.</p>
+        </div>
+        <div class="card reveal" style="transition-delay:160ms">
+          <p class="font-display text-3xl text-plum-600">$500</p>
+          <p class="mt-1 text-sm text-plum-700/90">Covers a full course of crisis materials, safety plans, and intake kits for an event.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-mist-100">
+    <div class="container-wide grid md:grid-cols-2 gap-10 items-center">
+      <div class="reveal">
+        <SectionHeading eyebrow="Other ways to give" title="Mail, stock, recurring, or in person." />
+        <ul class="mt-5 space-y-3 text-plum-700/90">
+          <li><strong>Mail a check</strong> payable to "Renewing Hope Family Counseling Center, Inc." to our office. <a href={`mailto:${site.email}`} class="font-semibold text-plum-600">Email for the address.</a></li>
+          <li><strong>Recurring gift</strong> — choose "monthly" on Givebutter for steady support that lets us plan ahead.</li>
+          <li><strong>Suggested tip transparency</strong> — Givebutter may show an optional tip to help cover platform fees. You can adjust it to any amount, including zero. <em>None of it comes out of your donation to RHS beyond standard card-processing fees.</em></li>
+          <li><strong>Memorial or tribute gifts</strong> — Givebutter supports "give in honor of" with a customizable message and recipient notification.</li>
+        </ul>
+      </div>
+      <div class="card bg-plum-900 text-mist-100 border-plum-700 reveal" style="transition-delay:80ms">
+        <h3 class="font-display text-xl text-white">Transparency promise</h3>
+        <p class="mt-2 text-mist-200 text-sm">We publish an annual summary of program and administrative spending. Questions about how funds are used? Email <a href={`mailto:${site.email}`} class="underline font-semibold">{site.email}</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-wide reveal">
+      <GivebutterWidget />
+    </div>
+  </section>
+</Layout>

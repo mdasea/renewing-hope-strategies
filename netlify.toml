@@ -1,0 +1,41 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Redirects from old Wix paths so existing links/search ranking resolve to new IA.
+# Astro also emits these as <meta http-equiv> pages in /dist, but Netlify _redirects is faster.
+
+# Single homepage-level redirects (mirror astro.config.mjs redirects for production)
+redirect /anxiety-counselling-in-hemet-ca               /services/anxiety/hemet                301
+redirect /depression-counselling-in-riverside-ca        /services/depression/riverside         301
+redirect /depression-counselling-in-murrieta-ca         /services/depression/murrieta          301
+redirect /depression-counselling-in-hemet-ca            /services/depression/hemet             301
+redirect /relationship-issues-counselling-in-riverside-ca /services/relationship/riverside    301
+redirect /relationship-issues-counselling-in-murrieta-ca  /services/relationship/murrieta      301
+redirect /relationship-issues-counselling-in-hemet-ca     /services/relationship/hemet         301
+redirect /anger-management-counselling-in-riverside-ca   /services/anger-management/riverside 301
+redirect /anger-management-counselling-in-murrieta-ca    /services/anger-management/murrieta  301
+redirect /anger-management-counselling-in-hemet-ca        /services/anger-management/hemet     301
+redirect /eating-disorders-counselling-in-riverside-ca   /services/eating-disorders/riverside 301
+redirect /eating-disorders-counselling-in-murrieta-ca    /services/eating-disorders/murrieta 301
+redirect /eating-disorders-counselling-in-hemet-ca       /services/eating-disorders/hemet     301
+redirect /meet-the-board                                 /about/board                         301
+redirect /event-list                                     /events                              301
+redirect /sliding-scale                                  /sliding-scale                        301
+redirect /donate                                         /donate                              301
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    X-Frame-Options = "SAMEORIGIN"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

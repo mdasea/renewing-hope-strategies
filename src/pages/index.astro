@@ -1,0 +1,168 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { site } from '@/config/site';
+import { services } from '@/data/services';
+import { areas } from '@/config/site';
+import { events } from '@/data/content';
+import SectionHeading from '@/components/SectionHeading.astro';
+import ServicesGrid from '@/components/ServicesGrid.astro';
+import Stats from '@/components/Stats.astro';
+import ContactForm from '@/components/ContactForm.astro';
+import NewsletterForm from '@/components/NewsletterForm.astro';
+
+const upcoming = [...events].sort((a,b) => a.date.localeCompare(b.date)).slice(0,3);
+
+// Unsplash mental-health / wellness imagery — free, licensed, theme-appropriate.
+const heroImg = '/brand/hero-group.jpg';
+const missionImg = '/brand/park-people.jpg';
+const mobileUnitImg = '/brand/board-banner.jpg';
+---
+<Layout>
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-mesh-plum bg-[length:200%_200%] animate-gradient-pan">
+    <div class="absolute inset-0 bg-grain [background-size:18px_18px] opacity-50" aria-hidden="true"></div>
+    <div class="container-wide relative py-20 md:py-28 grid md:grid-cols-2 gap-10 items-center">
+      <div class="reveal">
+        <p class="eyebrow !text-sage-700 mb-4">A 501(c)(3) Nonprofit · Hemet · Murrieta · Riverside, CA</p>
+        <h1 class="font-display text-4xl md:text-6xl leading-[1.05] text-plum-900">
+          Recovery is possible.<br/>
+          <span class="text-plum-600">We can help you get there.</span>
+        </h1>
+        <p class="mt-6 text-lg text-plum-700/90 max-w-prose">
+          Judgement-free mental-health and wellness counseling for individuals and families —
+          on a sliding scale, in person or through our mobile unit. No one is turned away for inability to pay.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/services" class="btn-primary">Get help →</a>
+          <a href="/donate" class="btn-gold">Donate</a>
+          <a href={`tel:${site.phoneHref}`} class="btn-secondary">Call {site.phoneDisplay}</a>
+        </div>
+        <p class="mt-6 text-sm text-plum-700/80">
+          In crisis right now? <a href="tel:988" class="font-semibold underline">Call or text 988</a> — free &amp; confidential, 24/7.
+        </p>
+      </div>
+
+      <div class="relative reveal" style="transition-delay:120ms">
+        <div class="aspect-[4/5] rounded-3xl shadow-lift relative overflow-hidden ring-1 ring-plum-300/40 animate-float">
+          <img src={heroImg} alt="Community members and counselors gathered for Renewing Hope Strategies" class="w-full h-full object-cover" loading="eager" />
+          <div class="absolute inset-0 bg-gradient-to-t from-plum-950/70 via-plum-900/20 to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6 text-mist-50">
+            <p class="font-display text-xl leading-snug">"Hope is the thing with feathers that perches in the soul."</p>
+            <p class="mt-2 text-xs uppercase tracking-wider text-sage-300">— Emily Dickinson</p>
+          </div>
+        </div>
+        <div class="absolute -bottom-5 -left-5 card !p-4 max-w-[14rem] shadow-lift">
+          <p class="text-xs eyebrow">Mobile Unit</p>
+          <p class="text-sm mt-1 text-plum-700/90">Counseling that comes to your community. <a href="/events" class="font-semibold text-plum-600">See schedule →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION / VISION (corrected from current site, where labels were swapped) -->
+  <section class="section">
+    <div class="container-wide grid md:grid-cols-2 gap-8">
+      <div class="card reveal">
+        <p class="eyebrow">Mission</p>
+        <h2 class="font-display text-2xl mt-2 text-plum-900">Recovery within reach, for everyone.</h2>
+        <p class="mt-4 text-plum-700/90">
+          To provide mental-health and wellness services in a positive, respectful, judgement-free environment,
+          empowering individuals to achieve recovery regardless of their socio-economic status.
+        </p>
+      </div>
+      <div class="card bg-plum-900 text-mist-100 border-plum-700 reveal" style="transition-delay:80ms">
+        <p class="eyebrow !text-gold-400">Vision</p>
+        <h2 class="font-display text-2xl mt-2 text-white">Stigma gives way to awareness.</h2>
+        <p class="mt-4 text-mist-200">
+          We envision a world where education and awareness about mental health take precedence over the stigma attached to it.
+        </p>
+      </div>
+    </div>
+    <div class="container-wide">
+      <Stats />
+    </div>
+  </section>
+
+  <ServicesGrid />
+
+  <!-- LOCATIONS -->
+  <section class="section bg-mist-100">
+    <div class="container-wide">
+      <SectionHeading eyebrow="Where we serve" title="Three communities. One mission." subtitle="Our team serves the Inland Empire with office-based care, telehealth, and a traveling mobile unit." />
+      <div class="grid gap-5 md:grid-cols-3 mt-10 reveal-stagger">
+        {Object.values(areas).map((a, i) => (
+          <div class="card reveal" style={`transition-delay:${i * 80}ms`}>
+            <h3 class="font-display text-xl text-plum-900">{a.name}</h3>
+            <p class="mt-2 text-sm text-plum-700/90">{a.blurb}</p>
+            <a href={`/locations/${a.slug}`} class="mt-4 inline-block text-sm font-semibold text-plum-600">Services in {a.name.split(',')[0]} →</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS / MOBILE UNIT -->
+  <section class="section">
+    <div class="container-wide grid md:grid-cols-3 gap-8 items-start">
+      <div class="md:col-span-1 reveal">
+        <SectionHeading eyebrow="Mobile Unit & Events" title="Counseling on the move." />
+        <p class="mt-4 text-plum-700/90">Our mobile unit brings free intake, sliding-scale enrollment, and resources directly to libraries, parks, and shelters across the Inland Empire.</p>
+        <a href="/events" class="btn-secondary mt-6 text-sm">Full calendar →</a>
+      </div>
+      <div class="md:col-span-2 grid gap-4 reveal-stagger">
+        <div class="card overflow-hidden !p-0 reveal" style="transition-delay:120ms">
+          <img src={mobileUnitImg} alt="Renewing Hope mobile unit at a community site" class="h-40 w-full object-cover" loading="lazy" />
+          <div class="p-5">
+            <p class="eyebrow !text-sage-700">On the road</p>
+            <p class="mt-1 text-plum-700/90">Look for our rolling mental-health unit at libraries and community centers. Subscribe for weekly location texts.</p>
+          </div>
+        </div>
+        {upcoming.map((ev, i) => (
+          <article class="card flex flex-col md:flex-row md:items-center gap-4 reveal" style={`transition-delay:${(i+1)*100}ms`}>
+            <div class="md:w-28 text-center">
+              <div class="font-display text-3xl text-plum-600">{new Date(ev.date).getDate()}</div>
+              <div class="text-xs uppercase tracking-wider text-plum-700/70">{new Date(ev.date).toLocaleString('en-US',{month:'short'})}</div>
+            </div>
+            <div class="flex-1">
+              <p class="eyebrow !text-gold-600">{ev.category.replace('-',' ')}</p>
+              <h3 class="font-display text-lg text-plum-900">{ev.title}</h3>
+              <p class="text-sm text-plum-700/80">{ev.time} · {ev.location}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- DONATE CTA -->
+  <section class="section bg-plum-fade text-mist-50 relative overflow-hidden">
+    <svg aria-hidden="true" class="absolute -bottom-12 -left-8 h-48 w-48 text-sage-400/20 animate-wing-flutter" viewBox="0 0 64 64" fill="currentColor">
+      <path d="M32 6c-10 10-26 10-30 7 3 13 16 23 30 23s27-10 30-23c-4 3-20 3-30-7z" opacity=".7"/>
+    </svg>
+    <div class="container-wide grid md:grid-cols-2 gap-10 items-center relative">
+      <div class="reveal">
+        <p class="eyebrow !text-gold-400">Give hope, give wings</p>
+        <h2 class="font-display text-3xl md:text-4xl text-white">$25 funds one sliding-scale session.</h2>
+        <p class="mt-4 text-mist-200 max-w-prose">Every gift is tax-deductible and stays local — paying for counseling someone could not otherwise afford, gas for the mobile unit, and crisis materials handed out at events.</p>
+        <a href="/donate" class="btn-gold mt-6">Donate now</a>
+      </div>
+      <div class="reveal" style="transition-delay:120ms">
+        <Stats />
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER + CONTACT -->
+  <section class="section">
+    <div class="container-wide grid md:grid-cols-2 gap-10">
+      <div class="reveal">
+        <SectionHeading eyebrow="Stay in the loop" title="Subscribe for updates." subtitle="We send a short update once a week with the mobile unit's location and resources. No spam." />
+        <div class="mt-6"><NewsletterForm /></div>
+      </div>
+      <div class="reveal" style="transition-delay:80ms">
+        <SectionHeading eyebrow="Let's connect" title="Send us a message." subtitle="We respond within one business day. This form is not for emergencies — call or text 988 in a crisis." />
+        <div class="mt-6"><ContactForm /></div>
+      </div>
+    </div>
+  </section>
+</Layout>

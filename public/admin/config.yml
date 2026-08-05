@@ -1,0 +1,67 @@
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: 'Create {{collection}} "{{slug}}"'
+    update: 'Update {{collection}} "{{slug}}"'
+    delete: 'Delete {{collection}} "{{slug}}"'
+    uploadMedia: 'Upload media "{{path}}"'
+    deleteMedia: 'Delete media "{{path}}"'
+
+site_url: https://www.renewinghopestrategies.org
+display_url: https://www.renewinghopestrategies.org
+logo_url: /favicon.svg
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "events"
+    label: "Events & Mobile Unit"
+    folder: "src/data/events"
+    create: true
+    delete: true
+    extension: "json"
+    format: "json"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} · {{date}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Time", name: "time", widget: "string" }
+      - { label: "Location", name: "location", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        default: "mobile-unit"
+        options: ["mobile-unit", "workshop", "fundraiser", "community"]
+      - { label: "Description", name: "description", widget: "text" }
+
+  - name: "team"
+    label: "Meet the Board"
+    folder: "src/data/team"
+    create: true
+    delete: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Role", name: "role", widget: "string" }
+      - { label: "Credentials", name: "credentials", widget: "string", required: false }
+      - { label: "Email", name: "email", widget: "string", required: false }
+      - { label: "Photo", name: "photo", widget: "image", required: false }
+      - { label: "Bio", name: "bio", widget: "text" }
+
+  - name: "site_settings"
+    label: "Site Settings (read-only reference)"
+    delete: false
+    create: false
+    editor:
+      preview: false
+    files:
+      - label: "Contact & brand"
+        name: "site"
+        file: "src/config/site.ts"
+        fields:
+          - { label: "Phone display (edit file? — read-only here)", name: "phoneDisplay", widget: "string" }

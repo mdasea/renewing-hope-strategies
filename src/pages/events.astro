@@ -1,0 +1,65 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import { events } from '@/data/content';
+import { site } from '@/config/site';
+
+const sorted = [...events].sort((a, b) => a.date.localeCompare(b.date));
+const fmt = (d: string) => new Date(d).toLocaleDateString('en-US', { weekday: 'short', month: 'long', day: 'numeric', year: 'numeric' });
+const tagStyles: Record<string, string> = {
+  'mobile-unit': 'bg-plum-100 text-plum-700',
+  'workshop': 'bg-sage-100 text-sage-700',
+  'fundraiser': 'bg-gold-100 text-gold-700',
+  'community': 'bg-mist-200 text-plum-700'
+};
+---
+<Layout title="Events & Mobile Unit Calendar" description="Find Renewing Hope Strategies' mobile mental-health unit across Hemet, Murrieta, and Riverside, plus community workshops and fundraisers.">
+  <section class="relative overflow-hidden bg-plum-900 text-mist-50">
+    <img src="/brand/board-banner.jpg" alt="" aria-hidden="true" loading="eager" class="absolute inset-0 h-full w-full object-cover opacity-30" />
+    <div class="absolute inset-0 bg-gradient-to-br from-plum-950/80 to-plum-800/40"></div>
+    <div class="container-wide relative py-14 md:py-18">
+      <SectionHeading
+        eyebrow="Mobile unit & events"
+        title="Counseling that comes to you."
+        subtitle="Our mobile unit visits libraries, parks, and shelters across the Inland Empire, with free intake, sliding-scale enrollment, and resources. Subscribe for weekly location updates."
+      />
+      <div class="mt-6">
+        <a href="/contact" class="btn-gold">Request an appointment</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-wide grid gap-6 reveal-stagger">
+      {sorted.map((ev, i) => (
+        <article class="card md:flex md:items-center md:justify-between gap-6 reveal" style={`transition-delay:${i*70}ms`}>
+          <div class="flex items-start gap-5">
+            <div class="text-center w-20 shrink-0">
+              <div class="font-display text-4xl text-plum-600">{new Date(ev.date).getDate()}</div>
+              <div class="text-xs uppercase tracking-wider text-plum-700/70">{new Date(ev.date).toLocaleString('en-US', { month: 'short' })}</div>
+            </div>
+            <div>
+              <span class={`inline-block text-[11px] uppercase tracking-wider px-2 py-0.5 rounded-full ${tagStyles[ev.category]}`}>{ev.category.replace('-', ' ')}</span>
+              <h3 class="font-display text-xl mt-2 text-plum-900">{ev.title}</h3>
+              <p class="text-sm text-plum-700/90 mt-1">{fmt(ev.date)} · {ev.time}</p>
+              <p class="text-sm text-plum-700/80 mt-1">{ev.location}</p>
+              <p class="mt-3 text-sm text-plum-700/90 max-w-prose">{ev.description}</p>
+            </div>
+          </div>
+          <div class="mt-4 md:mt-0 md:shrink-0">
+            <a href={`tel:${site.phoneHref}`} class="btn-secondary text-sm">Call to confirm</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section bg-mist-100">
+    <div class="container-wide">
+      <SectionHeading align="center" eyebrow="Host a stop" title="Want the mobile unit in your community?" subtitle="Libraries, shelters, churches, and community centers — we partner with trusted local sites. Email us to coordinate a visit." />
+      <div class="mt-6 text-center">
+        <a href={`mailto:${site.email}`} class="btn-primary">Email about hosting →</a>
+      </div>
+    </div>
+  </section>
+</Layout>

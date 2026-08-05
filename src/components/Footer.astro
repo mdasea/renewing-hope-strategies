@@ -1,0 +1,72 @@
+---
+import { site } from '@/config/site';
+import { services } from '@/data/services';
+import { areas } from '@/config/site';
+
+const year = new Date().getFullYear();
+---
+<footer class="bg-plum-950 text-mist-100 mt-20 relative overflow-hidden">
+  <!-- Decorative wing motif -->
+  <svg aria-hidden="true" class="absolute -top-10 right-6 h-32 w-32 text-plum-800/50 animate-wing-flutter" viewBox="0 0 64 64" fill="currentColor">
+    <path d="M32 8c-8 8-20 8-24 6 2 10 12 18 24 18s22-8 24-18c-4 2-16 2-24-6z" opacity=".6"/>
+  </svg>
+
+  <div class="container-wide py-14 grid gap-10 md:grid-cols-4 relative">
+    <div class="md:col-span-1">
+      <div class="flex items-center gap-3">
+        <img src="/brand/logo.png" alt="" width="48" height="48" aria-hidden="true" class="h-12 w-12 rounded-full object-cover ring-2 ring-sage-500/50 shadow-soft" />
+        <div class="leading-tight">
+          <div class="font-display text-lg text-white">{site.shortName}</div>
+          <div class="text-[10px] uppercase tracking-wider text-sage-400">{site.legal}</div>
+        </div>
+      </div>
+      <p class="mt-4 text-sm text-mist-200 max-w-xs">{site.tagline}</p>
+      <a href="/donate" class="btn-gold !py-2.5 mt-5 text-sm">Donate today</a>
+    </div>
+
+    <div>
+      <h3 class="font-display text-base text-white mb-3">Services</h3>
+      <ul class="grid gap-1.5 text-sm">
+        {services.map(s => (
+          <li><a href={`/services/${s.slug}`} class="hover:text-sage-300">{s.name}</a></li>
+        ))}
+        <li><a href="/sliding-scale" class="hover:text-sage-300">Sliding Scale</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="font-display text-base text-white mb-3">Locations</h3>
+      <ul class="grid gap-1.5 text-sm">
+        {Object.values(areas).map(a => (
+          <li><a href={`/locations/${a.slug}`} class="hover:text-sage-300">{a.name}</a></li>
+        ))}
+        <li><a href="/events" class="hover:text-sage-300">Mobile Unit &amp; Events</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="font-display text-base text-white mb-3">Contact</h3>
+      <ul class="grid gap-2 text-sm text-mist-200">
+        <li><a href={`tel:${site.phoneHref}`} class="hover:text-white">{site.phoneDisplay}</a></li>
+        <li><a href={`mailto:${site.email}`} class="hover:text-white">{site.email}</a></li>
+        <li>{site.hours.weekday}</li>
+        <li>{site.hours.friday}</li>
+        <li class="pt-2">
+          <a href={site.social.facebook} rel="noopener" class="hover:text-white">Facebook →</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-plum-800">
+    <div class="container-wide py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-mist-300">
+      <p>© {year} {site.name}. {site.legal}. All rights reserved.</p>
+      <div class="flex flex-wrap gap-4">
+        <a href={site.affiliates.rhfcc} class="hover:text-white">RHFCC Inc.</a>
+        <a href={site.affiliates.moveWithHope} class="hover:text-white">Move With Hope</a>
+        <a href="/privacy" class="hover:text-white">Privacy</a>
+        <a href="/sitemap-index.xml" class="hover:text-white">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,24 @@
+---
+import { site } from '@/config/site';
+---
+<form action={`https://formspree.io/f/${site.forms.newsletter}`} method="POST" class="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+  <div>
+    <label for="nl-first" class="field-label">First name *</label>
+    <input id="nl-first" name="first_name" type="text" class="field-input" required />
+  </div>
+  <div>
+    <label for="nl-email" class="field-label">Email *</label>
+    <input id="nl-email" name="email" type="email" class="field-input" required />
+  </div>
+  <div class="flex items-end">
+    <label class="flex items-start gap-2 text-sm text-plum-700/90 md:col-span-3 -mt-2 mb-2">
+      <input type="checkbox" name="sms" class="mt-1" />
+      <span>Also text me the mobile unit's weekly location.</span>
+    </label>
+  </div>
+  <div class="sm:col-span-2 md:col-span-3">
+    <button type="submit" class="btn-primary">Subscribe for updates</button>
+    <p class="text-xs text-plum-700/70 mt-2">No spam. Unsubscribe anytime. Your info stays with RHS only.</p>
+  </div>
+  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+</form>

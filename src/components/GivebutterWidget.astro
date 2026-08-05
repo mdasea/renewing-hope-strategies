@@ -1,0 +1,20 @@
+---
+// Givebutter hosts the donation flow. We embed their script-driven widget fallbacks to a
+// donate page link. They auto-send a tax-compliant receipt since RHS is a verified 501(c)(3).
+import { site } from '@/config/site';
+const slug = site.donate.givebutterSlug;
+---
+<div class="givebutter-embed" data-gb-embed-id={slug}>
+  <div class="bg-white border border-mist-200 rounded-2xl p-8 text-center shadow-soft reveal">
+    <p class="eyebrow mb-2">Secure donation</p>
+    <h3 class="font-display text-2xl text-plum-900">Give once or every month</h3>
+    <p class="mt-3 text-sm text-plum-700/90 max-w-md mx-auto">
+      Your gift is tax-deductible. Donations support sliding-scale counseling and our mobile mental-health unit
+      traveling across Hemet, Murrieta, and Riverside.
+    </p>
+    <div class="mt-6 flex flex-wrap justify-center gap-3">
+      <a href={`https://www.givebutter.com/${slug}`} rel="noopener" target="_blank" class="btn-gold">Donate with Givebutter →</a>
+    </div>
+    <p class="mt-5 text-xs text-plum-700/70">Powered by Givebutter · Card · Apple Pay · Google Pay · PayPal · ACH</p>
+  </div>
+</div>

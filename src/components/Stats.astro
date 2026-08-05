@@ -1,0 +1,20 @@
+---
+import { stats } from '@/data/content';
+---
+<dl class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8 reveal-stagger">
+  {stats.map((s, i) => {
+    // numeric count-up when the stat is a plain integer; otherwise just show.
+    const num = parseInt(s.number, 10);
+    const isNumber = !isNaN(num) && /^\d+$/.test(s.number);
+    return (
+      <div class="text-center reveal" style={`transition-delay:${i * 90}ms`}>
+        <dt
+          class="font-display text-3xl md:text-4xl text-plum-700"
+          data-countup={isNumber ? num : ''}
+          data-countup-display={isNumber ? undefined : undefined}
+        >{isNumber ? '0' : s.number}</dt>
+        <dd class="mt-1 text-sm text-plum-800/80">{s.label}</dd>
+      </div>
+    );
+  })}
+</dl>

@@ -1,0 +1,28 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { site } from '@/config/site';
+---
+<Layout title="Privacy" description="Privacy notice for Renewing Hope Strategies.">
+  <section class="section">
+    <div class="container-prose space-y-5 text-plum-700/90 reveal">
+      <h1 class="font-display text-3xl text-plum-900">Privacy Notice</h1>
+      <p>Last updated: August {new Date().getFullYear()}.</p>
+      <h2 class="font-display text-xl text-plum-900">What we collect</h2>
+      <p>When you use our contact, newsletter, or donation forms, we collect the information you provide — your name, email, phone (if provided), and message. Donation information is processed by Givebutter; we receive confirmation and contact details but not your full card number.</p>
+      <h2 class="font-display text-xl text-plum-900">How we use it</h2>
+      <ul class="list-disc pl-6 space-y-1">
+        <li>To respond to your request and follow up about services.</li>
+        <li>To schedule appointments and send updates you opt into.</li>
+        <li>To send tax receipts and acknowledgements for donations.</li>
+      </ul>
+      <h2 class="font-display text-xl text-plum-900">Sharing</h2>
+      <p>We do not sell or rent your information. We share data only with processors (Formspree, Givebutter) to operate these tools, and where required by law.</p>
+      <h2 class="font-display text-xl text-plum-900">Your rights</h2>
+      <p>You can request access to or deletion of your data at any time by emailing <a href={`mailto:${site.email}`} class="font-semibold underline">{site.email}</a>. Note that we are required to keep certain records (like donation receipts) for tax compliance.</p>
+      <h2 class="font-display text-xl text-plum-900">Health information</h2>
+      <p>Clinical records are maintained separately under our Notice of Privacy Practices provided at intake, in line with HIPAA where applicable. This website itself does not store clinical records.</p>
+      <h2 class="font-display text-xl text-plum-900">Contact</h2>
+      <p>Questions about this notice? Email <a href={`mailto:${site.email}`} class="font-semibold underline">{site.email}</a>.</p>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,14 @@
+---
+// Inline SVGs as service icons — lightweight, no extra requests, themeable via currentColor.
+export interface Props { name: 'anxiety' | 'depression' | 'relationship' | 'anger' | 'eating'; class?: string; }
+const { name, class: cls = 'h-7 w-7' } = Astro.props;
+
+const paths: Record<string, string> = {
+  anxiety: '<path d="M12 2a10 10 0 1 0 .001 0zM8 14a4 4 0 1 1 8 0M9 9l.01 0M15 9l.01 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+  depression: '<path d="M12 2a10 10 0 1 0 .001 0zM8 15a5 5 0 0 1 8 0M9 9.5l.01 0M15 9.5l.01 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+  relationship: '<path d="M12 21s-7-4.7-9.2-9.2C1.2 8.2 3 5 6 5c1.9 0 3.4 1.1 4 2.5C10.6 6.1 12.1 5 14 5c3 0 4.8 3.2 3.2 6.8C19 16.3 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+  anger: '<path d="M12 2a10 10 0 1 0 .001 0zM7 16a4 4 0 0 1 10 0M7 8.5L11 10M17 8.5L13 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+  eating: '<path d="M12 3v18M5 8c0 4 3 6 7 6s7-2 7-6M8 8h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
+};
+---
+<svg viewBox="0 0 24 24" class={cls} aria-hidden="true" set:html={paths[name]} />
