@@ -2,12 +2,16 @@
 import Layout from '@/layouts/Layout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import { team } from '@/data/content';
+
+const placeholderPhoto = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80';
 ---
 <Layout title="Meet the Board" description="The volunteer board of Renewing Hope Strategies supports accessible, judgement-free mental health across the Inland Empire.">
-  <section class="bg-mesh-plum bg-[length:200%_200%] animate-gradient-pan py-14 md:py-18">
-    <div class="container-wide">
+  <section class="relative overflow-hidden bg-plum-900 text-mist-50">
+    <img src="/brand/group-meeting.jpg" alt="" aria-hidden="true" loading="eager" class="absolute inset-0 h-full w-full object-cover opacity-25" />
+    <div class="absolute inset-0 bg-gradient-to-br from-plum-950/80 to-plum-800/40"></div>
+    <div class="container-wide relative py-14 md:py-18">
       <SectionHeading eyebrow="About" title="Our Team." subtitle="Renewing Hope Strategies is governed by a volunteer board committed to making mental-health care accessible to everyone, regardless of income." />
-      <p class="mt-6 text-plum-700/90 max-w-prose">Email <a href="mailto:office@renewing-hope.org" class="font-semibold underline">office@renewing-hope.org</a> or call <a href="tel:+19514653665" class="font-semibold underline">(951) 465-3665</a> to reach us.</p>
+      <p class="mt-6 text-mist-100/90 max-w-prose">Email <a href="mailto:office@renewing-hope.org" class="font-semibold underline">office@renewing-hope.org</a> or call <a href="tel:+19514653665" class="font-semibold underline">(951) 465-3665</a> to reach us.</p>
     </div>
   </section>
 
@@ -15,8 +19,14 @@ import { team } from '@/data/content';
     <div class="container-wide grid gap-6 md:grid-cols-2 lg:grid-cols-4 reveal-stagger">
       {team.map((m, i) => (
         <article class="card text-center reveal" style={`transition-delay:${i*70}ms`}>
-          <div class="h-24 w-24 rounded-full mx-auto bg-gradient-to-br from-sage-200 to-plum-300 grid place-items-center text-3xl font-display text-plum-700">
-            {m.name.replace(/^\[(.*)\]$/,'?').slice(0,1)}
+          <div class="h-24 w-24 rounded-full mx-auto overflow-hidden bg-gradient-to-br from-sage-200 to-plum-300">
+            {m.photo ? (
+              <img src={m.photo} alt={m.name} class="h-full w-full object-cover" loading="lazy" />
+            ) : (
+              <div class="h-full w-full grid place-items-center text-3xl font-display text-plum-700">
+                {m.name.replace(/^\[(.*)\]$/,'?').slice(0,2)}
+              </div>
+            )}
           </div>
           <h3 class="mt-4 font-display text-lg text-plum-900">{m.name}</h3>
           {m.credentials && <p class="text-xs uppercase tracking-wider text-plum-600">{m.credentials}</p>}

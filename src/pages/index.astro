@@ -9,6 +9,7 @@ import ServicesGrid from '@/components/ServicesGrid.astro';
 import Stats from '@/components/Stats.astro';
 import ContactForm from '@/components/ContactForm.astro';
 import NewsletterForm from '@/components/NewsletterForm.astro';
+import VideoEmbed from '@/components/VideoEmbed.astro';
 
 const upcoming = [...events].sort((a,b) => a.date.localeCompare(b.date)).slice(0,3);
 
@@ -59,8 +60,11 @@ const mobileUnitImg = '/brand/board-banner.jpg';
     </div>
   </section>
 
-  <!-- MISSION / VISION (corrected from current site, where labels were swapped) -->
+  <!-- MISSION / VISION -->
   <section class="section">
+    <div class="container-wide">
+      <img src={missionImg} alt="Renewing Hope community members gathering outdoors" class="rounded-2xl shadow-lift w-full h-48 md:h-72 object-cover mb-10 reveal" loading="lazy" />
+    </div>
     <div class="container-wide grid md:grid-cols-2 gap-8">
       <div class="card reveal">
         <p class="eyebrow">Mission</p>
@@ -80,6 +84,17 @@ const mobileUnitImg = '/brand/board-banner.jpg';
     </div>
     <div class="container-wide">
       <Stats />
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section class="section bg-mist-100">
+    <div class="container-wide">
+      <SectionHeading align="center" eyebrow="See the hope" title="What Renewing Hope is all about." subtitle="Watch a short introduction to our mission and the people we serve across the Inland Empire." />
+      <div class="mt-8 max-w-3xl mx-auto reveal">
+        <VideoEmbed videoId="dQw4w9WgXcQ" title="Renewing Hope Strategies — Our Mission" />
+        <p class="mt-3 text-xs text-center text-plum-700/60">This is a placeholder video. Replace the <code>videoId</code> in <code>src/pages/index.astro</code> with your own YouTube or Vimeo video ID.</p>
+      </div>
     </div>
   </section>
 

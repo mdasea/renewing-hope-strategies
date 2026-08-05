@@ -2,10 +2,19 @@
 import Layout from '@/layouts/Layout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import { areas } from '@/config/site';
+
+const heroImg = 'https://images.unsplash.com/photo-1473042904451-00171c2fecbd?auto=format&fit=crop&w=1400&q=80';
+const cityImages: Record<string, string> = {
+  hemet: 'https://images.unsplash.com/photo-1502086223501-7fe6d314c5d3?auto=format&fit=crop&w=600&q=80',
+  murrieta: 'https://images.unsplash.com/photo-1500382017468-9049fedbdbe8?auto=format&fit=crop&w=600&q=80',
+  riverside: 'https://images.unsplash.com/photo-1473042904451-00171c2fecbd?auto=format&fit=crop&w=600&q=80'
+};
 ---
 <Layout title="Locations" description="Renewing Hope Strategies serves Hemet, Murrieta, and Riverside, CA with office-based care, telehealth, and a mobile counseling unit.">
-  <section class="bg-mesh-plum bg-[length:200%_200%] animate-gradient-pan py-14 md:py-18">
-    <div class="container-wide">
+  <section class="relative overflow-hidden bg-plum-900 text-mist-50">
+    <img src={heroImg} alt="" aria-hidden="true" loading="eager" class="absolute inset-0 h-full w-full object-cover opacity-25" />
+    <div class="absolute inset-0 bg-gradient-to-br from-plum-950/80 to-plum-800/40"></div>
+    <div class="container-wide relative py-14 md:py-18">
       <SectionHeading
         eyebrow="Where we serve"
         title="Care across the Inland Empire."
@@ -17,10 +26,13 @@ import { areas } from '@/config/site';
   <section class="section">
     <div class="container-wide grid md:grid-cols-3 gap-6 reveal-stagger">
       {Object.values(areas).map((a, i) => (
-        <a href={`/locations/${a.slug}`} class="card hover:shadow-lift transition reveal" style={`transition-delay:${i*80}ms`}>
-          <h3 class="font-display text-2xl text-plum-900">{a.name.split(',')[0]}</h3>
-          <p class="mt-2 text-sm text-plum-700/90">{a.blurb}</p>
-          <span class="mt-4 inline-block text-sm font-semibold text-plum-600">View services →</span>
+        <a href={`/locations/${a.slug}`} class="card overflow-hidden !p-0 hover:shadow-lift transition reveal" style={`transition-delay:${i*80}ms`}>
+          <img src={cityImages[a.slug] || cityImages.hemet} alt="" aria-hidden="true" class="h-36 w-full object-cover" loading="lazy" />
+          <div class="p-5">
+            <h3 class="font-display text-2xl text-plum-900">{a.name.split(',')[0]}</h3>
+            <p class="mt-2 text-sm text-plum-700/90">{a.blurb}</p>
+            <span class="mt-4 inline-block text-sm font-semibold text-plum-600">View services →</span>
+          </div>
         </a>
       ))}
     </div>

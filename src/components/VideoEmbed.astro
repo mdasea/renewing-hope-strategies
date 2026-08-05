@@ -1,0 +1,29 @@
+---
+const {
+  videoId,
+  platform = 'youtube' as 'youtube' | 'vimeo',
+  title = 'Video',
+  poster
+} = Astro.props;
+---
+<div class="aspect-video rounded-2xl overflow-hidden shadow-lift bg-plum-950">
+  {platform === 'youtube' ? (
+    <iframe
+      src={`https://www.youtube-nocookie.com/embed/${videoId}${poster ? `?${new URLSearchParams({ poster })}` : ''}`}
+      title={title}
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      class="w-full h-full"
+      loading="lazy"
+    ></iframe>
+  ) : (
+    <iframe
+      src={`https://player.vimeo.com/video/${videoId}`}
+      title={title}
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen
+      class="w-full h-full"
+      loading="lazy"
+    ></iframe>
+  )}
+</div>

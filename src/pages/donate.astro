@@ -4,9 +4,13 @@ import SectionHeading from '@/components/SectionHeading.astro';
 import GivebutterWidget from '@/components/GivebutterWidget.astro';
 import Stats from '@/components/Stats.astro';
 import { site } from '@/config/site';
+
+const heroImg = 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=80';
+const impactImg = 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80';
+const otherWaysImg = 'https://images.unsplash.com/photo-1579621970795-87facc2f976d?auto=format&fit=crop&w=800&q=80';
 ---
 <Layout title="Donate" description="Donate to Renewing Hope Strategies, a 501(c)(3) nonprofit. Tax-deductible gifts fund sliding-scale counseling and our mobile mental-health unit across the Inland Empire.">
-  <section class="bg-mesh-plum bg-[length:200%_200%] animate-gradient-pan py-14 md:py-18">
+  <section class="relative overflow-hidden bg-mesh-plum bg-[length:200%_200%] animate-gradient-pan py-14 md:py-18">
     <div class="container-wide grid md:grid-cols-2 gap-10 items-center">
       <div class="reveal">
         <p class="eyebrow !text-sage-700 mb-3">Give hope</p>
@@ -14,7 +18,10 @@ import { site } from '@/config/site';
         <p class="mt-4 text-lg text-plum-700/90 max-w-prose">Renewing Hope Strategies is a registered 501(c)(3) nonprofit. Every dollar funds counseling for people who could not otherwise afford it — and keeps our mobile unit on the road.</p>
         <p class="mt-4 text-sm text-plum-700/80">EIN {site.ein} · Tax-deductible to the extent allowed by law. An automatic tax-compliant receipt is emailed to you after every gift.</p>
       </div>
-      <div class="reveal" style="transition-delay:120ms"><GivebutterWidget /></div>
+      <div class="reveal" style="transition-delay:120ms">
+        <img src={heroImg} alt="" aria-hidden="true" class="rounded-2xl shadow-lift w-full aspect-[4/3] object-cover mb-6" loading="eager" />
+        <GivebutterWidget />
+      </div>
     </div>
   </section>
 
@@ -23,17 +30,26 @@ import { site } from '@/config/site';
       <SectionHeading align="center" eyebrow="Your impact" title="Where your money goes." />
       <Stats />
       <div class="mt-12 grid md:grid-cols-3 gap-6 reveal-stagger">
-        <div class="card reveal">
-          <p class="font-display text-3xl text-plum-600">$25</p>
-          <p class="mt-1 text-sm text-plum-700/90">Funds one sliding-scale counseling session for someone who couldn't otherwise afford care.</p>
+        <div class="card overflow-hidden !p-0 reveal">
+          <img src={impactImg} alt="" aria-hidden="true" class="h-32 w-full object-cover" loading="lazy" />
+          <div class="p-5">
+            <p class="font-display text-3xl text-plum-600">$25</p>
+            <p class="mt-1 text-sm text-plum-700/90">Funds one sliding-scale counseling session for someone who couldn't otherwise afford care.</p>
+          </div>
         </div>
-        <div class="card reveal" style="transition-delay:80ms">
-          <p class="font-display text-3xl text-plum-600">$100</p>
-          <p class="mt-1 text-sm text-plum-700/90">Pays for a mobile-unit stop in a community without easy access to mental-health care.</p>
+        <div class="card overflow-hidden !p-0 reveal" style="transition-delay:80ms">
+          <img src="/brand/board-banner.jpg" alt="" aria-hidden="true" class="h-32 w-full object-cover" loading="lazy" />
+          <div class="p-5">
+            <p class="font-display text-3xl text-plum-600">$100</p>
+            <p class="mt-1 text-sm text-plum-700/90">Pays for a mobile-unit stop in a community without easy access to mental-health care.</p>
+          </div>
         </div>
-        <div class="card reveal" style="transition-delay:160ms">
-          <p class="font-display text-3xl text-plum-600">$500</p>
-          <p class="mt-1 text-sm text-plum-700/90">Covers a full course of crisis materials, safety plans, and intake kits for an event.</p>
+        <div class="card overflow-hidden !p-0 reveal" style="transition-delay:160ms">
+          <img src="/brand/hero-group.jpg" alt="" aria-hidden="true" class="h-32 w-full object-cover" loading="lazy" />
+          <div class="p-5">
+            <p class="font-display text-3xl text-plum-600">$500</p>
+            <p class="mt-1 text-sm text-plum-700/90">Covers a full course of crisis materials, safety plans, and intake kits for an event.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -50,9 +66,12 @@ import { site } from '@/config/site';
           <li><strong>Memorial or tribute gifts</strong> — Givebutter supports "give in honor of" with a customizable message and recipient notification.</li>
         </ul>
       </div>
-      <div class="card bg-plum-900 text-mist-100 border-plum-700 reveal" style="transition-delay:80ms">
-        <h3 class="font-display text-xl text-white">Transparency promise</h3>
-        <p class="mt-2 text-mist-200 text-sm">We publish an annual summary of program and administrative spending. Questions about how funds are used? Email <a href={`mailto:${site.email}`} class="underline font-semibold">{site.email}</a>.</p>
+      <div class="space-y-6 reveal" style="transition-delay:80ms">
+        <img src={otherWaysImg} alt="" aria-hidden="true" class="rounded-2xl shadow-lift w-full aspect-[4/3] object-cover" loading="lazy" />
+        <div class="card bg-plum-900 text-mist-100 border-plum-700">
+          <h3 class="font-display text-xl text-white">Transparency promise</h3>
+          <p class="mt-2 text-mist-200 text-sm">We publish an annual summary of program and administrative spending. Questions about how funds are used? Email <a href={`mailto:${site.email}`} class="underline font-semibold">{site.email}</a>.</p>
+        </div>
       </div>
     </div>
   </section>

@@ -18,7 +18,13 @@ const cityImg: Record<string, string> = {
   murrieta: 'https://images.unsplash.com/photo-1500382017468-9049fedbdbe8?auto=format&fit=crop&w=1400&q=80',
   riverside: 'https://images.unsplash.com/photo-1473042904451-00171c2fecbd?auto=format&fit=crop&w=1400&q=80'
 };
+const cityBodyImg: Record<string, string> = {
+  hemet: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
+  murrieta: 'https://images.unsplash.com/photo-1529156069898-49953a2a3b7c?auto=format&fit=crop&w=800&q=80',
+  riverside: 'https://images.unsplash.com/photo-1545389336-cf0906944356?auto=format&fit=crop&w=800&q=80'
+};
 const img = cityImg[area.slug] || cityImg.hemet;
+const bodyImg = cityBodyImg[area.slug] || cityBodyImg.hemet;
 ---
 <Layout
   title={`Counseling in ${area.name}`}
@@ -47,6 +53,10 @@ const img = cityImg[area.slug] || cityImg.hemet;
             <p class="mt-2 text-sm text-plum-700/90">{s.tagline}</p>
           </a>
         ))}
+      </div>
+
+      <div class="mt-10 reveal">
+        <img src={bodyImg} alt="" aria-hidden="true" class="rounded-2xl shadow-lift w-full h-48 md:h-64 object-cover" loading="lazy" />
       </div>
 
       <div class="mt-12 card bg-plum-900 text-mist-100 border-plum-700 reveal">

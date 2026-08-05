@@ -2,36 +2,58 @@
 import Layout from '@/layouts/Layout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import { site } from '@/config/site';
+
+const heroImg = 'https://images.unsplash.com/photo-1545389336-cf0906944356?auto=format&fit=crop&w=1400&q=80';
+const donateImg = 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=600&q=80';
+const volunteerImg = 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=600&q=80';
+const hostImg = '/brand/board-banner.jpg';
+const cliniciansImg = 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80';
 ---
 <Layout title="Get Involved" description="Volunteer, donate, partner, or join the board of Renewing Hope Strategies. Help bring accessible mental-health care to the Inland Empire.">
-  <section class="bg-mesh-plum bg-[length:200%_200%] animate-gradient-pan py-14 md:py-18">
-    <div class="container-wide">
+  <section class="relative overflow-hidden bg-plum-900 text-mist-50">
+    <img src={heroImg} alt="" aria-hidden="true" loading="eager" class="absolute inset-0 h-full w-full object-cover opacity-25" />
+    <div class="absolute inset-0 bg-gradient-to-br from-plum-950/80 to-plum-800/40"></div>
+    <div class="container-wide relative py-14 md:py-18">
       <SectionHeading eyebrow="Get involved" title="Be part of the hope." subtitle="Whether you give an hour, a dollar, or a career — there is a place for you in this work." />
     </div>
   </section>
 
   <section class="section" id="volunteer">
     <div class="container-wide grid md:grid-cols-3 gap-6 reveal-stagger">
-      <a href="/donate" class="card hover:shadow-lift transition reveal">
-        <h3 class="font-display text-xl text-plum-900">Donate</h3>
-        <p class="mt-2 text-sm text-plum-700/90">One-time or monthly. Tax-deductible. Funds sliding-scale sessions and the mobile unit.</p>
+      <a href="/donate" class="card overflow-hidden !p-0 hover:shadow-lift transition reveal">
+        <img src={donateImg} alt="" aria-hidden="true" class="h-36 w-full object-cover" loading="lazy" />
+        <div class="p-5">
+          <h3 class="font-display text-xl text-plum-900">Donate</h3>
+          <p class="mt-2 text-sm text-plum-700/90">One-time or monthly. Tax-deductible. Funds sliding-scale sessions and the mobile unit.</p>
+        </div>
       </a>
-      <a href={`mailto:${site.email}?subject=Volunteer%20with%20Renewing%20Hope`} class="card hover:shadow-lift transition reveal" style="transition-delay:80ms">
-        <h3 class="font-display text-xl text-plum-900">Volunteer</h3>
-        <p class="mt-2 text-sm text-plum-700/90">Licensed clinicians, graduate interns, event helpers, and bilingual translators welcome.</p>
+      <a href={`mailto:${site.email}?subject=Volunteer%20with%20Renewing%20Hope`} class="card overflow-hidden !p-0 hover:shadow-lift transition reveal" style="transition-delay:80ms">
+        <img src={volunteerImg} alt="" aria-hidden="true" class="h-36 w-full object-cover" loading="lazy" />
+        <div class="p-5">
+          <h3 class="font-display text-xl text-plum-900">Volunteer</h3>
+          <p class="mt-2 text-sm text-plum-700/90">Licensed clinicians, graduate interns, event helpers, and bilingual translators welcome.</p>
+        </div>
       </a>
-      <a href="/events" class="card hover:shadow-lift transition reveal" style="transition-delay:160ms">
-        <h3 class="font-display text-xl text-plum-900">Host a mobile-unit stop</h3>
-        <p class="mt-2 text-sm text-plum-700/90">Libraries, shelters, churches, and community centers — partner with us.</p>
+      <a href="/events" class="card overflow-hidden !p-0 hover:shadow-lift transition reveal" style="transition-delay:160ms">
+        <img src={hostImg} alt="" aria-hidden="true" class="h-36 w-full object-cover" loading="lazy" />
+        <div class="p-5">
+          <h3 class="font-display text-xl text-plum-900">Host a mobile-unit stop</h3>
+          <p class="mt-2 text-sm text-plum-700/90">Libraries, shelters, churches, and community centers — partner with us.</p>
+        </div>
       </a>
     </div>
   </section>
 
   <section class="section bg-mist-100">
-    <div class="container-prose reveal">
-      <SectionHeading align="center" eyebrow="Clinicians" title="Practicum & licensure hours" subtitle="We supervise AMFT, ASW, and APCC associates who want to serve under-resourced communities. Email us with your program information and availability." />
-      <div class="mt-6 text-center">
-        <a href={`mailto:${site.email}?subject=Associate%20clinician%20inquiry`} class="btn-primary">Email about joining the team</a>
+    <div class="container-wide grid md:grid-cols-2 gap-10 items-center">
+      <div class="reveal">
+        <img src={cliniciansImg} alt="" aria-hidden="true" class="rounded-2xl shadow-lift w-full aspect-[4/3] object-cover" loading="lazy" />
+      </div>
+      <div class="reveal" style="transition-delay:80ms">
+        <SectionHeading align="left" eyebrow="Clinicians" title="Practicum & licensure hours" subtitle="We supervise AMFT, ASW, and APCC associates who want to serve under-resourced communities. Email us with your program information and availability." />
+        <div class="mt-6">
+          <a href={`mailto:${site.email}?subject=Associate%20clinician%20inquiry`} class="btn-primary">Email about joining the team</a>
+        </div>
       </div>
     </div>
   </section>

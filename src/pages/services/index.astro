@@ -5,13 +5,18 @@ import ServicesGrid from '@/components/ServicesGrid.astro';
 import { services } from '@/data/services';
 import { areas } from '@/config/site';
 import ServiceIcon from '@/components/ServiceIcon.astro';
+
+const heroImg = 'https://images.unsplash.com/photo-1573497620053-ea5300da1b61?auto=format&fit=crop&w=1400&q=80';
+const chooseImg = 'https://images.unsplash.com/photo-1573164574472-797cdf4a5ca2?auto=format&fit=crop&w=800&q=80';
 ---
 <Layout
   title="Counseling Services"
   description="Anxiety, depression, relationship, anger management, and eating-disorder counseling in Hemet, Murrieta, and Riverside, CA. Sliding-scale. Judgement-free. Nonprofit."
 >
-  <section class="bg-mesh-plum bg-[length:200%_200%] animate-gradient-pan py-16 md:py-20">
-    <div class="container-wide">
+  <section class="relative overflow-hidden bg-plum-900 text-mist-50">
+    <img src={heroImg} alt="" aria-hidden="true" loading="eager" class="absolute inset-0 h-full w-full object-cover opacity-25" />
+    <div class="absolute inset-0 bg-gradient-to-br from-plum-950/80 to-plum-800/40"></div>
+    <div class="container-wide relative py-16 md:py-20">
       <SectionHeading
         align="center"
         eyebrow="Our services"
@@ -23,22 +28,24 @@ import ServiceIcon from '@/components/ServiceIcon.astro';
 
   <ServicesGrid />
 
-  <section class="section">
-    <div class="container-wide">
-      <SectionHeading eyebrow="Find your fit" title="Choose a service to learn more." />
-      <div class="grid gap-4 md:grid-cols-2 mt-8 reveal-stagger">
-        {services.map((s, i) => (
-          <a href={`/services/${s.slug}`} class="card flex gap-4 items-start hover:shadow-lift transition reveal" style={`transition-delay:${i*70}ms`}>
-            <div class="h-12 w-12 rounded-xl bg-plum-50 text-plum-600 flex items-center justify-center shrink-0"><ServiceIcon name={s.icon} /></div>
-            <div>
-              <h3 class="font-display text-xl text-plum-900">{s.name}</h3>
-              <p class="text-sm mt-1 text-plum-700/90">{s.tagline}</p>
-              <p class="mt-3 text-xs flex flex-wrap gap-1.5 text-plum-600">
-                {Object.values(areas).map(a => <span class="rounded-full bg-mist-100 px-2 py-0.5">{a.name.split(',')[0]}</span>)}
-              </p>
-            </div>
-          </a>
-        ))}
+  <section class="section bg-mist-100">
+    <div class="container-wide grid md:grid-cols-2 gap-10 items-center">
+      <div class="reveal">
+        <SectionHeading eyebrow="Find your fit" title="Choose a service to learn more." />
+        <div class="grid gap-3 mt-6">
+          {services.map((s, i) => (
+            <a href={`/services/${s.slug}`} class="card flex gap-4 items-center hover:shadow-lift transition">
+              <div class="h-10 w-10 rounded-xl bg-plum-50 text-plum-600 flex items-center justify-center shrink-0"><ServiceIcon name={s.icon} /></div>
+              <div>
+                <h3 class="font-display text-lg text-plum-900">{s.name}</h3>
+                <p class="text-sm text-plum-700/80">{s.tagline.slice(0,60)}…</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:120ms">
+        <img src={chooseImg} alt="" aria-hidden="true" class="rounded-2xl shadow-lift w-full aspect-[4/3] object-cover" loading="lazy" />
       </div>
     </div>
   </section>

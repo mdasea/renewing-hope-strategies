@@ -3,10 +3,14 @@ import Layout from '@/layouts/Layout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import ContactForm from '@/components/ContactForm.astro';
 import { site } from '@/config/site';
+
+const contactImg = 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80';
 ---
 <Layout title="Contact" description="Reach Renewing Hope Strategies in Hemet, Murrieta, and Riverside, CA. Call (951) 465-3665 or email office@renewing-hope.org.">
-  <section class="bg-mesh-plum bg-[length:200%_200%] animate-gradient-pan py-14 md:py-18">
-    <div class="container-wide">
+  <section class="relative overflow-hidden bg-plum-900 text-mist-50">
+    <img src={contactImg} alt="" aria-hidden="true" loading="eager" class="absolute inset-0 h-full w-full object-cover opacity-25" />
+    <div class="absolute inset-0 bg-gradient-to-br from-plum-950/80 to-plum-800/40"></div>
+    <div class="container-wide relative py-14 md:py-18">
       <SectionHeading
         eyebrow="Let's connect"
         title="Send us a message and we'll get back to you shortly."
@@ -33,6 +37,12 @@ import { site } from '@/config/site';
         <div class="card bg-plum-900 text-mist-100 border-plum-700 reveal" style="transition-delay:180ms">
           <p class="eyebrow !text-gold-400">Crisis</p>
           <p class="mt-2 text-sm text-mist-200">Call or text <a href="tel:988" class="font-semibold underline">988</a> any time.</p>
+        </div>
+        <div class="card overflow-hidden !p-0 reveal" style="transition-delay:240ms">
+          <img src={contactImg} alt="" aria-hidden="true" class="h-32 w-full object-cover" loading="lazy" />
+          <div class="p-4">
+            <p class="text-xs text-plum-700/70 text-center">We respond within one business day.</p>
+          </div>
         </div>
       </aside>
       <div class="md:col-span-2 reveal" style="transition-delay:80ms">

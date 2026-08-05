@@ -1,10 +1,1 @@
-Initial commit: full-site Astro rebuild of Renewing Hope Strategies
-
-- Astro 5 + Tailwind CSS 3 + Decap CMS + Netlify
-- Brand palette sampled from official logo (plum + sage + gold)
-- 35 static pages: home, services, city-service SEO, locations, about, board, sliding-scale, events, donate, contact, get-involved, privacy, 404
-- Persistent 988 crisis bar sitewide
-- Scroll-reveal, count-up, gradient-mesh, float, wing motifs
-- Astro View Transitions for SPA-like navigation
-- All old Wix URLs redirected (301) preserving local SEO
-- Givebutter donations, Formspree contact/newsletter forms
+Fix netlify.toml redirect syntax for proper TOML table format
