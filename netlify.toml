@@ -6,26 +6,82 @@
   NODE_VERSION = "20"
 
 # Redirects from old Wix paths so existing links/search ranking resolve to new IA.
-# Astro also emits these as <meta http-equiv> pages in /dist, but Netlify _redirects is faster.
+# Each [[redirects]] block defines one 301 redirect.
 
-# Single homepage-level redirects (mirror astro.config.mjs redirects for production)
-redirect /anxiety-counselling-in-hemet-ca               /services/anxiety/hemet                301
-redirect /depression-counselling-in-riverside-ca        /services/depression/riverside         301
-redirect /depression-counselling-in-murrieta-ca         /services/depression/murrieta          301
-redirect /depression-counselling-in-hemet-ca            /services/depression/hemet             301
-redirect /relationship-issues-counselling-in-riverside-ca /services/relationship/riverside    301
-redirect /relationship-issues-counselling-in-murrieta-ca  /services/relationship/murrieta      301
-redirect /relationship-issues-counselling-in-hemet-ca     /services/relationship/hemet         301
-redirect /anger-management-counselling-in-riverside-ca   /services/anger-management/riverside 301
-redirect /anger-management-counselling-in-murrieta-ca    /services/anger-management/murrieta  301
-redirect /anger-management-counselling-in-hemet-ca        /services/anger-management/hemet     301
-redirect /eating-disorders-counselling-in-riverside-ca   /services/eating-disorders/riverside 301
-redirect /eating-disorders-counselling-in-murrieta-ca    /services/eating-disorders/murrieta 301
-redirect /eating-disorders-counselling-in-hemet-ca       /services/eating-disorders/hemet     301
-redirect /meet-the-board                                 /about/board                         301
-redirect /event-list                                     /events                              301
-redirect /sliding-scale                                  /sliding-scale                        301
-redirect /donate                                         /donate                              301
+[[redirects]]
+  from = "/anxiety-counselling-in-hemet-ca"
+  to = "/services/anxiety/hemet"
+  status = 301
+
+[[redirects]]
+  from = "/depression-counselling-in-riverside-ca"
+  to = "/services/depression/riverside"
+  status = 301
+
+[[redirects]]
+  from = "/depression-counselling-in-murrieta-ca"
+  to = "/services/depression/murrieta"
+  status = 301
+
+[[redirects]]
+  from = "/depression-counselling-in-hemet-ca"
+  to = "/services/depression/hemet"
+  status = 301
+
+[[redirects]]
+  from = "/relationship-issues-counselling-in-riverside-ca"
+  to = "/services/relationship/riverside"
+  status = 301
+
+[[redirects]]
+  from = "/relationship-issues-counselling-in-murrieta-ca"
+  to = "/services/relationship/murrieta"
+  status = 301
+
+[[redirects]]
+  from = "/relationship-issues-counselling-in-hemet-ca"
+  to = "/services/relationship/hemet"
+  status = 301
+
+[[redirects]]
+  from = "/anger-management-counselling-in-riverside-ca"
+  to = "/services/anger-management/riverside"
+  status = 301
+
+[[redirects]]
+  from = "/anger-management-counselling-in-murrieta-ca"
+  to = "/services/anger-management/murrieta"
+  status = 301
+
+[[redirects]]
+  from = "/anger-management-counselling-in-hemet-ca"
+  to = "/services/anger-management/hemet"
+  status = 301
+
+[[redirects]]
+  from = "/eating-disorders-counselling-in-riverside-ca"
+  to = "/services/eating-disorders/riverside"
+  status = 301
+
+[[redirects]]
+  from = "/eating-disorders-counselling-in-murrieta-ca"
+  to = "/services/eating-disorders/murrieta"
+  status = 301
+
+[[redirects]]
+  from = "/eating-disorders-counselling-in-hemet-ca"
+  to = "/services/eating-disorders/hemet"
+  status = 301
+
+[[redirects]]
+  from = "/meet-the-board"
+  to = "/about/board"
+  status = 301
+
+[[redirects]]
+  from = "/event-list"
+  to = "/events"
+  status = 301
 
 [[headers]]
   for = "/*"
